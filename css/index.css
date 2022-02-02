@@ -118,6 +118,7 @@ z-index: 0;
     place-items: center;
     justify-content: space-around;
     width: 60%;
+    margin-bottom: 30px;
 }
 
 .working_card{
@@ -148,7 +149,51 @@ z-index: 0;
 }
 
 .few_offers{
+    transform: skewY(-2deg);
+    padding-top: 30px;
     width: 100%;
     min-height: 800px;
-    background-color: #65CB99;
+    background-image: linear-gradient(45deg, #24742b, #48ce93);
+    display: flex;
+    flex-direction: column;
+    place-items: center;
 }
+.discount_title{
+    transform: skewY(2deg);
+
+    margin-bottom: 70px;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    place-items: center;
+}
+
+.discount_container{
+    transform: skewY(2deg);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex-direction: row;
+    place-items: center;
+    justify-content: space-around;
+    width: 60%;
+}
+
+.discount{
+    background-color:#fff ;
+    width: 325px;
+    height: 254px;
+    display: flex;
+    flex-direction: column;
+    padding:  20px 15px 15px 15px;
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+.discount img{
+    height: 75px;
+    object-fit: contain;
+    margin-bottom: 30px;
+}
+

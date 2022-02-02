@@ -75,15 +75,24 @@ include ('includes/check_session.php');
     $stmt->execute();
     $stmt = $stmt->rowCount()
     ?>
+    <div class="discount_title">
     <h3><?=$stmt ?> Offres partenaires disponibles </h3>
-    <h5>Achats après achats, cummulés des points</h5>
-    <div class="discoun_container">
+    <h5>Achats après achats, cummulez des points</h5>
+    </div>
+    <div class="discount_container">
         <?php
-        $stmt = $db->prepare("SELECT brieve_description, store_image FROM discounts");
+        $stmt = $db->prepare("SELECT briev_description, store_image FROM discounts LIMIT 6");
         $stmt->execute();
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($res as $key => $discount){
-            echo'';
+
+           ?>
+            <div class="discount">
+                <img src="<?=$discount['store_image'] ?>">
+                     <hr>
+                <h3><?=$discount['briev_description'] ?></h3>
+            </div>
+        <?php
         }
         ?>
     </div>
