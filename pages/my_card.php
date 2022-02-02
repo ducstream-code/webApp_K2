@@ -38,15 +38,15 @@ include('../includes/message.php');
         <div><hr></div>
         <div class="first_section_paragraph">
             <img src="../assets/images/icons/check.svg">
-            <h4>Où manger avec votre carte Ticket Restaurant® ? Retrouvez tous les restos qui acceptent la carte pour déjeuner grâce à l’application MyEdenred</h4>
+            <h4>Ou utiliser vos points LoyaltyCard ? Retrouvez toutes les enseignes qui acceptent la carte pour profiter des offres grâce au site LoyaltyCard</h4>
         </div>
         <div class="first_section_paragraph">
             <img src="../assets/images/icons/check.svg">
-            <h4>Où manger avec votre carte Ticket Restaurant® ? Retrouvez tous les restos qui acceptent la carte pour déjeuner grâce à l’application MyEdenred</h4>
+            <h4>Une envie d'un repas a prix casser ? Depensez vos points dans les nombreux points de restaurations partenaires</h4>
         </div>
         <div class="first_section_paragraph">
             <img src="../assets/images/icons/check.svg">
-            <h4>Où manger avec votre carte Ticket Restaurant® ? Retrouvez tous les restos qui acceptent la carte pour déjeuner grâce à l’application MyEdenred</h4>
+            <h4>Vous voullez partir en voyage ? Decouvrez les compagnies aérienne vous proposant certains offres</h4>
         </div>
         <div class="button_container">
             <?= checkLoggedUser() ? '<button class="section_button" onclick="window.location=\'#\'">Voir ma carte</button>' : '<button class="section_button" onclick="window.location=\'register.php\'">Je m\'inscris gratuitement</button>' ?>
@@ -55,7 +55,32 @@ include('../includes/message.php');
     </div>
 </div>
 
+<!-- comptage nombre d'offres de réductions -->
+<?php
+$stmt = $db->prepare("SELECT id FROM discounts");
+$stmt->execute();
+$nbDiscount = $stmt->rowCount();
+
+$nbUser = $db->prepare("SELECT id FROM users");
+$nbUser->execute();
+$nbUser = $nbUser->rowCount();
+
+?>
+
+
 <div class="second_section_container">
+    <div class="data_box">
+        <h1><?=$nbDiscount?></h1>
+        <h5>Offres dans de nombreux magasins et enseignes partenaires</h5>
+    </div>
+    <div class="data_box">
+        <h1><?=$nbUser?></h1>
+        <h5>Clients satisfait par les offres de nos partenaires</h5>
+    </div>
+    <div class="data_box">
+        <h1>200 000</h1>
+        <h5>restaurants, commerces et enseignes de distribution partenaires(2)</h5>
+    </div>
 
 </div>
 

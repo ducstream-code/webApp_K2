@@ -61,6 +61,7 @@ html, body{
     height: 60vh;
     display: flex;
     flex-direction: row-reverse;
+    margin-bottom: 200px;
 }
 .first_section{
     padding: 75px 300px 0px 400px;
@@ -129,7 +130,28 @@ hr:not([size]) {
     justify-content: center;
 }
 
+.second_section_container{
+    width: 100%;
+    height: 300px;
+    padding: 0 200px 0 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    place-content: space-around;
 
+}
+
+.data_box{
+    height: 250px;
+    width: 350px;
+    border: solid 1px rgb(126, 218, 230);
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+}
 
 
 
