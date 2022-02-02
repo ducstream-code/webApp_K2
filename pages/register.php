@@ -26,7 +26,7 @@ include ("../includes/header.php");
 
 
 
-    <div class="login_type">
+    <div class="login_type" id="login_type_container">
         <div class="card" style="width: 18rem;">
             <img src="/assets/images/logos/logo-500px.png" class="card-img-top" alt="...">
             <div class="card-body">

@@ -177,8 +177,7 @@ z-index: 0;
     flex-direction: row;
     place-items: center;
     justify-content: space-around;
-    width: 60%;
-    flex-basis: 33.333333%;
+    width: 1060px;
 }
 
 .discount{

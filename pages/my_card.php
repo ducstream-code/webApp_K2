@@ -6,7 +6,7 @@ include ('../includes/check_session.php');
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/mycard.css">
     <link rel="icon" type="image/png" href=""/>
     <meta charset="utf-8">
     <meta name="viewport" content="width-device-width, initial-scale=1">
@@ -26,5 +26,38 @@ include ('../includes/check_session.php');
 include ("../includes/header.php");
 include('../includes/message.php');
 ?>
+<div class="diagonal-box">
+    <div class="diagonal_box_content">
+        <h1>Avec Loyalty Card, un compte, une carte, des centaines de boutiques partenaires.</h1>
+    </div>
+</div>
+
+<div class="first_section_container">
+    <div class="first_section">
+        <h1>Les avantages de la carte LoyaltyCard</h1>
+        <div><hr></div>
+        <div class="first_section_paragraph">
+            <img src="../assets/images/icons/check.svg">
+            <h4>Où manger avec votre carte Ticket Restaurant® ? Retrouvez tous les restos qui acceptent la carte pour déjeuner grâce à l’application MyEdenred</h4>
+        </div>
+        <div class="first_section_paragraph">
+            <img src="../assets/images/icons/check.svg">
+            <h4>Où manger avec votre carte Ticket Restaurant® ? Retrouvez tous les restos qui acceptent la carte pour déjeuner grâce à l’application MyEdenred</h4>
+        </div>
+        <div class="first_section_paragraph">
+            <img src="../assets/images/icons/check.svg">
+            <h4>Où manger avec votre carte Ticket Restaurant® ? Retrouvez tous les restos qui acceptent la carte pour déjeuner grâce à l’application MyEdenred</h4>
+        </div>
+        <div class="button_container">
+            <?= checkLoggedUser() ? '<button class="section_button" onclick="window.location=\'#\'">Voir ma carte</button>' : '<button class="section_button" onclick="window.location=\'register.php\'">Je m\'inscris gratuitement</button>' ?>
+        </div>
+
+    </div>
+</div>
+
+<div class="second_section_container">
+
+</div>
+
 </body>
 </html>
