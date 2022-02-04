@@ -52,6 +52,7 @@
 
     .header_login{
         padding: 10px;
+        height: 100%;
         width: 10%;
         border-left: solid 1px black;
         display: flex;
