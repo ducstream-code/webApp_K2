@@ -17,7 +17,7 @@
 
     }
     .header_logo img{
-        height: 40px;
+        height: 60px;
     }
     .header_logo img:hover{
         cursor: pointer;
