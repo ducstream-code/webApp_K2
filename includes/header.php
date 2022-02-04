@@ -5,7 +5,7 @@
         position: absolute;
         background-color: #ECECEC;
         width: 100%;
-        height: 9vh;
+        height: 75px;
         display: flex;
         flex-direction: row;
         place-items: center;
@@ -17,7 +17,7 @@
 
     }
     .header_logo img{
-        height: 9vh;
+        height: 40px;
     }
     .header_logo img:hover{
         cursor: pointer;
@@ -26,7 +26,7 @@
     .header_buttons{
         padding-right: 5%;
         padding-left: 5%;
-        height: 7vh;
+        height: 50px;
         width: 75%;
         display: flex;
         flex-direction: row;
@@ -37,7 +37,7 @@
     .header_buttons button{
         background-color: #100A57;
         font-size: 1rem;
-        height: 5vh;
+        height: 40px;
         color: #B2DDAE;
         border-radius: 20px;
         padding-right: 50px;
