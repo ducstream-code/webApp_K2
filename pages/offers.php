@@ -43,7 +43,7 @@ include ("../includes/header.php");
             ?>
             <div class="offer_card">
                 <div class="offer_image">
-                    <img src="..<?=$discount['store_image']?>>">
+                    <img src="..<?=$discount['store_image']?>">
                 </div>
                 <div class="offer_footer">
                     <?= $discount['briev_description']?>
