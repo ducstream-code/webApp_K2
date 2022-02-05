@@ -73,6 +73,22 @@ body, html{
     flex-wrap: nowrap;
 }
 
+.offers::-webkit-scrollbar {
+    height: 8px; /* width of the entire scrollbar */
+
+}
+
+.offers::-webkit-scrollbar-track {
+    background: transparent; /* color of the tracking area */
+}
+
+.offers::-webkit-scrollbar-thumb {
+    background-color: grey; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+}
+
+
 .offer_card{
     min-width: 250px;
     margin-right: 20px;
@@ -101,3 +117,4 @@ body, html{
     font-weight: 700;
     font-size: 18px;
 }
+
