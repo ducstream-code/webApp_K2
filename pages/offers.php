@@ -8,6 +8,8 @@ include ("../includes/header.php");
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="../css/offers.css">
     <link rel="icon" type="image/png" href=""/>
     <meta charset="utf-8">
@@ -29,73 +31,39 @@ include ("../includes/header.php");
 
 <div id="offers_bubble" class="offers_bubble_container">
     <div class="offer_container">
-        <div class="offer_header" onclick="big_bubble()">
+        <div class="offer_header" onclick="bigBubble()">
             <h1>Offres</h1>
-            <h1><ion-icon name="chevron-down-outline"></ion-icon></h1>
+            <h1><ion-icon id="arrow_offers" name="chevron-down-outline"></ion-icon></h1>
         </div>
 
-        <div class="offers">
-            <?php
-            $stmt = $db->prepare("SELECT briev_description, store_image FROM discounts LIMIT 6");
-            $stmt->execute();
-            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($res as $key => $discount){
-            ?>
-            <div class="offer_card">
-                <div class="offer_image">
-                    <img src="..<?=$discount['store_image']?>">
-                </div>
-                <div class="offer_footer">
-                    <?= $discount['briev_description']?>
-                </div>
-            </div>
-            <?php
-            }
-            ?>
-
-        </div>
 
     </div>
-
-</div>
-<div id="shop_bubble" class="offers_bubble_container">
-    <div class="offer_container">
-        <div class="offer_header">
-            <h1>Boutique</h1>
-            <h1><ion-icon name="chevron-down-outline"></ion-icon></h1>
-        </div>
-
-    </div>
-
-</div>
-
-<div class="shop_container"></div>
 
 <script>
-    function big_bubble() {
-        let bubble = document.getElementById('offers_bubble');
-        let bubble_inside = document.querySelector('.offer_container');
-        let offers = document.querySelector('.offers')
-        bubble.style.marginTop = '70px';
-        bubble_inside.style.marginTop = '70px';
-        bubble.style.height='300px';
-        bubble_inside.style.height='300px';
-        offers.style.display='flex';
-        document.querySelector('#offers_bubble .offer_header').setAttribute("onClick", "little_bubble()");
+    function bigBubble(){
+        let bubble = document.getElementById('offers_bubble')
+        let arrow = document.getElementById('arrow_offers')
+        arrow.name='chevron-up-outline'
+        bubble.style.top='0'
+        bubble.style.zIndex='200'
+        bubble.style.position='absolute'
+        bubble.style.marginTop='0'
+        bubble.style.borderRadius='0px'
+        bubble.style.height='100%'
+        document.querySelector('#offers_bubble .offer_header').setAttribute("onClick", "littleBubble()");
     }
 
-    function little_bubble() {
-        let bubble = document.getElementById('offers_bubble');
-        let bubble_inside = document.querySelector('.offer_container');
-        let offers = document.querySelector('.offers')
-
-        bubble.style.marginTop = '200px';
-        bubble_inside.style.marginTop = '200px';
+    function littleBubble(){
+        let bubble = document.getElementById('offers_bubble')
+        let arrow = document.getElementById('arrow_offers')
+        arrow.name='chevron-down-outline'
+        bubble.style.top='0'
+        bubble.style.zIndex='0'
+        bubble.style.position='relative'
+        bubble.style.marginTop='200px'
+        bubble.style.borderRadius='45px'
         bubble.style.height='75px'
-        bubble_inside.style.height='75px'
-        offers.style.display='none';
-
-        document.querySelector('#offers_bubble .offer_header').setAttribute("onClick", "big_bubble();");
+        document.querySelector('#offers_bubble .offer_header').setAttribute("onClick", "bigBubble()");
     }
 </script>
 </body>
