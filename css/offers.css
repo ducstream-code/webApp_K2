@@ -1,11 +1,20 @@
-body, html{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,400;1,500;1,600;1,700&display=swap');
+*{font-family: Montserrat;}
+
+html, body{
     width: 100%;
     height: 100%;
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
 }
 
 .alert_container{
-
     position: absolute !important;
     top: 12vh;
     width: 100%;
@@ -21,6 +30,287 @@ body, html{
     margin-bottom: 0!important;
 }
 
+.diagonal-box {
+    background-image: linear-gradient(45deg, #0a2657, #65CB99);
+
+    transform: skewY(-2deg);
+    position: relative;
+    top: -40px;
+    z-index: 0;
+    height: 520px;
+    width: 100%;
+    margin-bottom: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.diagonal_box_content {
+    padding: 150px 10% 0 7%;
+    color: white;
+    text-align: center;
+    font-family: Montserrat;
+    width: 100%;
+    margin: 0 auto;
+    transform: skewY(2deg);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.diagonal_box_content h1{
+    font-weight: 800 !important;
+    font-size: 35px !important;
+}
+.first_section_container{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 70px;
+}
+.first_section{
+    left: 0;
+    padding: 75px 200px 0px 200px;
+    width: 900px;
+    height: 700px;
+    background-color: #D4F3F7;
+    border-radius: 50px 0px 0px 50px;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.first_section hr:not([size]) {
+    height: 10px !important;
+    opacity: 1;
+    border-radius: 15px;
+    color: brown;
+    background: #0a2657;
+    width: 60px;
+    margin: 0;
+}
+.first_section h1{
+    font-family: Montserrat;
+    font-size: 35px !important;
+    font-weight: 600!important;
+}
+.first_section_paragraph h4{
+    font-family: Montserrat;
+    font-size: 18px !important;
+    font-weight: 600!important;
+    width: 500px;
+}
+
+.first_section_paragraph{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+
+}
+.first_section_paragraph img{
+    margin-right: 15px;
+}
+
+.section_button{
+    background-color: #100A57;
+    font-size: 1rem;
+    height: 50px;
+    color: #fff;
+    border-radius: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-style: none;
+    width: 400px;
+    font-family: Montserrat;
+    font-weight: 600;
+}
+
+.section_button button{
+
+}
+
+.button_container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.offers_container{
+    padding: 0 50px 0 50px;
+    top: 0;
+    position: absolute;
+    z-index: -1;
+    transition: 0.5s linear;
+    height: 0px;
+    width: 100%;
+    background-color: #100A57;
+
+}
+.offers_header{
+    color: white;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    place-items: center;
+}
+.offer_header ion-icon{
+    margin-top: 5px;
+}
+
+.offers_container hr:not([size]){
+    height: 3px;
+    color: white;
+    opacity: 1;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.offers_sort_display{
+    width: 100%;
+    padding: 25px;
+    display: none;
+    flex-direction: row;
+    height: 700px;
+
+}
+
+.sort_container{
+    width: 15%;
+    height: 100%;
+    color: white;
+    border-right: solid 3px white;
+}
+
+.sort_container h2{
+    margin-top: 15px;
+}
+
+.sort_container .sort_search{
+    color: white;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid white;
+}
+.sort_container .sort_search::placeholder{
+    color: white;
+}
+
+
+.categories_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.categorie{
+    color: white;
+    height: 40px;
+    width: 200px;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    background-color: transparent;
+    border: solid 1px white;
+    margin: 10px;
+
+}
+
+.categorie:hover{
+    color: #100A57;
+    background-color: white;
+}
+
+.offers_display{
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.offer{
+    height: 270px;
+    width: 320px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding:  20px 15px 15px 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.offer img{
+    height: 75px;
+    object-fit: contain;
+    margin-bottom: 30px;
+}
+
+
+.second_section_container{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 70px;
+}
+
+.second_section{
+    left: 0;
+    padding: 75px 200px 0px 200px;
+    width: 900px;
+    height: 700px;
+    background-color: #D4F3F7;
+    border-radius: 0px 50px 50px 0px;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.second_section hr:not([size]) {
+    height: 10px !important;
+    opacity: 1;
+    border-radius: 15px;
+    color: brown;
+    background: #0a2657;
+    width: 60px;
+    margin: 0;
+}
+.second_section h1{
+    font-family: Montserrat;
+    font-size: 35px !important;
+    font-weight: 600!important;
+}
+.second_section_paragraph h4{
+    font-family: Montserrat;
+    font-size: 18px !important;
+    font-weight: 600!important;
+    width: 500px;
+}
+
+.second_section_paragraph{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+
+}
+.second_section_paragraph img{
+    margin-right: 15px;
+}
+
+
+
+
+
+
+/*
 #offers_bubble{
     margin-top: 200px;
     transition: 0.5s;
@@ -51,70 +341,29 @@ body, html{
 
 }
 
-.offer_header{
-    height: 75px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 30px 0 0;
-    text-align: center;
-    place-items: center;
-}
-.offer_header ion-icon{
-    margin-top: 5px;
-}
+
 
 .offers{
     display: none;
     padding: 0 30px 0 30px;
     height: 225px;
-    width: 100%;
-    overflow-x: scroll;
+    width: 100%;    overflow-x: scroll;
     justify-content: space-between;
     flex-wrap: nowrap;
 }
 
 .offers::-webkit-scrollbar {
-    height: 8px; /* width of the entire scrollbar */
+    height: 8px;
 
 }
 
 .offers::-webkit-scrollbar-track {
-    background: transparent; /* color of the tracking area */
+    background: transparent;
 }
 
 .offers::-webkit-scrollbar-thumb {
-    background-color: grey; /* color of the scroll thumb */
-    border-radius: 20px; /* roundness of the scroll thumb */
-    /* creates padding around scroll thumb */
-}
+    background-color: grey;
+    border-radius: 20px;
 
-
-.offer_card{
-    min-width: 250px;
-    margin-right: 20px;
-    height: 180px;
-    background: #fff;
-    border-radius: 25px;
-
-}
-.offer_image{
-    padding-top: 15px;
-    height: 70%;
-    display: flex;
-    justify-content: center;
-}
-.offer_image img{
-    max-width: 100%;
-    max-height: 80%;
-    object-fit: contain;
-}
-
-.offer_footer{
-    text-align: center;
-    height: 30%;
-    border-top: 1px solid black;
-    color: #0a2657;
-    font-weight: 700;
-    font-size: 18px;
 }
 
