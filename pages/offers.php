@@ -22,7 +22,7 @@ include ('../includes/check_session.php');
     <title>Nos offres</title>
 </head>
 
-<body>
+<body id="body">
 <div class="offers_container" id="offers_container">
     <div class="offers_header" onclick="littleBubble()">
         <h1>Offres</h1>
@@ -137,8 +137,9 @@ include('../includes/message.php');
         let arrow = document.getElementById('arrow_offers')
         let data = document.getElementById('offers_sort_display1')
         data.style.display='flex'
-        bubble.style.zIndex='200'
+        bubble.style.zIndex='1'
         bubble.style.height='100%'
+
 
     }
 
