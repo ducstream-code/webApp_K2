@@ -61,6 +61,46 @@ include ('../includes/check_session.php');
         </div>
     </div>
 </div>
+
+<div class="shop_container" id="shop_container">
+    <div class="shop_header" onclick="shopLittleBubble()">
+        <h1>Offres</h1>
+        <h1><ion-icon id="arrow_offers" name="chevron-up-outline"></ion-icon></h1>
+    </div>
+    <hr>
+    <div class="shop_sort_display" id="shop_sort_display1">
+        <div class="shop_sort_container">
+            <input class="shop_sort_search" type="text" placeholder="Recherche">
+            <h2>Catégories:</h2>
+            <div class="shop_categories_container">
+                <button class="shop_categorie">Alimentation</button>
+                <button class="shop_categorie">Voyage</button>
+                <button class="shop_categorie">Mode</button>
+                <button class="shop_categorie">Automobile</button>
+                <button class="shop_categorie">Entretien</button>
+            </div>
+
+        </div>
+        <div class="shop_display">
+            <?php
+            $stmt = $db->prepare("SELECT briev_description, store_image FROM discounts LIMIT 6");
+            $stmt->execute();
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($res as $key => $discount){
+                ?>
+                <div class="offer">
+                    <img src="<?=$discount['store_image'] ?>">
+                    <hr>
+                    <h3><?=$discount['briev_description'] ?></h3>
+                </div>
+                <?php
+            }
+            ?>
+
+        </div>
+    </div>
+    </div>
+</div>
 <?php
 include ("../includes/header.php");
 include('../includes/message.php');
@@ -111,7 +151,7 @@ include('../includes/message.php');
             <h4>blablablablablablablablablablablablablablablablablabla.</h4>
         </div>
         <div class="button_container">
-            <button class="section_button" onclick="">Voir la boutique</button>
+            <button class="section_button" onclick="shopBigBubble()">Voir la boutique</button>
         </div>
 
     </div>
@@ -136,7 +176,13 @@ include('../includes/message.php');
         let bubble = document.getElementById('offers_container')
         let arrow = document.getElementById('arrow_offers')
         let data = document.getElementById('offers_sort_display1')
-        data.style.display='flex'
+
+        function show(){
+            data.style.display='flex'
+
+        }
+
+       const myTimeout = setTimeout(show, 500);
         bubble.style.zIndex='1'
         bubble.style.height='100%'
 
@@ -147,6 +193,34 @@ include('../includes/message.php');
         let bubble = document.getElementById('offers_container')
         let arrow = document.getElementById('arrow_offers')
         let data = document.getElementById('offers_sort_display1')
+        data.style.display='none'
+        bubble.style.height='0px'
+        bubble.style.zIndex='-1'
+
+    }
+
+    function shopBigBubble(){
+
+        let bubble = document.getElementById('shop_container')
+        let arrow = document.getElementById('arrow_offers')
+        let data = document.getElementById('shop_sort_display1')
+
+        function show(){
+            data.style.display='flex'
+
+        }
+
+        const myTimeout = setTimeout(show, 500);
+        bubble.style.zIndex='1'
+        bubble.style.height='100%'
+
+
+    }
+
+    function shopLittleBubble(){
+        let bubble = document.getElementById('shop_container')
+        let arrow = document.getElementById('arrow_offers')
+        let data = document.getElementById('shop_sort_display1')
         data.style.display='none'
         bubble.style.height='0px'
         bubble.style.zIndex='-1'

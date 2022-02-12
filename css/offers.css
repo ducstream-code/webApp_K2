@@ -307,6 +307,117 @@ input:focus, textarea:focus, select:focus {
 }
 
 
+.shop_container{
+    padding: 75px 50px 0 50px;
+    position: absolute;
+    z-index: -1;
+    transition: 0.5s linear;
+    height: 0px;
+    width: 100%;
+    background-color: #100A57;
+
+
+}
+.shop_header{
+    color: white;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    place-items: center;
+}
+.shop_header ion-icon{
+    margin-top: 5px;
+}
+
+.shop_container hr:not([size]){
+    height: 3px;
+    color: white;
+    opacity: 1;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.shop_sort_display{
+    width: 100%;
+    padding: 25px;
+    display: none;
+    flex-direction: row;
+    height: 700px;
+
+}
+
+.shop_sort_container{
+    width: 15%;
+    height: 100%;
+    color: white;
+    border-right: solid 3px white;
+}
+
+.sort_container h2{
+    margin-top: 15px;
+}
+
+.shop_sort_container .shop_sort_search{
+    color: white;
+    height: 40px;
+
+    padding-left: 10px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid white;
+}
+.shop_sort_container .shop_sort_search::placeholder{
+    color: white;
+}
+
+
+.shop_categories_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.shop_categorie{
+    color: white;
+    height: 40px;
+    max-width: 200px;
+    font-size: 1rem;
+    border-radius: 25px;
+    background-color: transparent;
+    border: solid 1px white;
+    margin: 10px;
+
+}
+
+.shop_categorie:hover{
+    color: #100A57;
+    background-color: white;
+}
+
+.shop_offers_display{
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.shop_display{
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+
 @media screen and (max-width: 1490px) {
     .sort_container .sort_search{
         width: 160px;
