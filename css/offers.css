@@ -422,13 +422,22 @@ input:focus, textarea:focus, select:focus {
     .sort_container .sort_search{
         width: 160px;
     }
+    .shop_sort_container .shop_sort_search{
+        width: 160px;
+    }
 }
 
 @media screen and (max-width: 1210px) {
     .sort_container .sort_search{
         width: 120px;
     }
+    .shop_sort_container .shop_sort_search{
+        width: 120px;
+    }
+
 }
+
+
 
 /*
 #offers_bubble{
