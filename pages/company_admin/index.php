@@ -1,4 +1,4 @@
-<?
+<?php
 
 // DISPLAY ERRORS
 ini_set('display_errors', 1);
@@ -22,7 +22,7 @@ Cher ' . $line . ',
 Votre entreprise vous à inscris sur loyaltyCard!
 
 Veuillez cliquer sur ce lien pour vérifier votre email et créer votre compte:
-https://aurelienk.space/page?email='. $line . '&hash='. $hash . '
+https://aurelienk.space/pages/client_register.php?email='.$line .'&hash='.$hash .'
 
 ';
         $headers = 'From:noreply@loyaltycard.fr' . "\r\n";
@@ -33,21 +33,8 @@ https://aurelienk.space/page?email='. $line . '&hash='. $hash . '
 
     fclose($handle);
 } else {
-    // error opening the file.
+    echo 'error';
 }
 
-//envoie mail de verification:
-/*
-$message = '
-Cher ' . $_POST['username'] . ',
-Merci de vous être inscrit.e sur Loyalty Card!
-
-Veuillez cliquer sur ce lien pour vérifier votre email:
-http://127.0.0.1:81/php/verify_email.php?email='. $_POST['email'] . '&hash='. $hash . '
-
-';
-$headers = 'From:noreply@loyaltycard.fr' . "\r\n";
-mail($_POST['email'], 'Inscription | Verification', $message, $headers);
-*/
 
 ?>
