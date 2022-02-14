@@ -15,7 +15,6 @@ $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
 
 $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-echo $newFileName;
 $uploadFileDir = 'mail_lists/';
 $dest_path = $uploadFileDir . $newFileName;
 
@@ -36,7 +35,6 @@ if ($handle) {
     while (($line = fgets($handle)) !== false) {
 
 
-
         $hash = hash('sha256',$line);
         $stmt = $db->prepare("INSERT INTO register_mail (email, hash) VALUES (:email, :hash)");
         $stmt->execute(['email'=>rtrim($line), 'hash' =>$hash]);
@@ -46,7 +44,7 @@ Cher ' . $line . ',
 Votre entreprise vous à inscris sur loyaltyCard!
 
 Veuillez cliquer sur ce lien pour vérifier votre email et créer votre compte:
-https://aurelienk.space/pages/client_register.php?email='.$line.'&hash='.$hash .'&r='.$r .'
+https://aurelienk.space/pages/client_register.php?email='.$line.'&hash='.$hash.'&r='.$r .'
 
 ';
         $headers = 'From:noreply@loyaltycard.fr' . "\r\n";
