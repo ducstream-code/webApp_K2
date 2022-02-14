@@ -83,7 +83,7 @@ $res = $stmt->fetch();
 $sql = "INSERT INTO register_mail (email,hash) VALUES (:email, :hash)";
 $stmt = $db->prepare($sql);
 $stmt->execute([
-    'userid'=> $email,
+    'email'=> $email,
     'hash' => $hash,
 ]);
 
