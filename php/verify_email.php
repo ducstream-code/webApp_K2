@@ -20,7 +20,8 @@ $res2 = $stmt->fetch();
 
 $stmt = $db->prepare("SELECT verified FROM clientscompanies WHERE email =:email");
 $stmt->execute(['email'=>$mail]);
-$res3 = $stmt->fetch();
+$res3 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo $res3;
 
 if($res3['verified'] = 1){
     echo $res3;
