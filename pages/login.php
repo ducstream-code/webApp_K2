@@ -1,13 +1,13 @@
 <?php
 
-include ('../includes/db.php');
-include ('../includes/check_session.php');
+include('../includes/db.php');
+include('../includes/check_session.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/register.css">
     <link rel="icon" type="image/png" href=""/>
     <meta charset="utf-8">
     <meta name="viewport" content="width-device-width, initial-scale=1">
@@ -25,13 +25,37 @@ include ('../includes/check_session.php');
 <body>
 <?php
 include("../includes/message.php");
-include ("../includes/header.php");
+include("../includes/header.php");
 ?>
-<form class="form" action="../php/login.php" method="post">
-    <input type="email" name="email">
-    <input type="password" name="password">
-    <input type="submit">
+<div class="container">
 
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form action="../php/login/login_companies.php" method="post">
+    <h3>Je suis une entreprise</h3>
+
+    <label for="username">Email</label>
+    <input name="email" type="email" placeholder="Email" id="username">
+
+    <label for="password">Password</label>
+    <input name="password" type="password" placeholder="Password" id="password">
+
+    <button>Se connecter</button>
 </form>
+<form action="../php/login/login.php" method="post">
+    <h3>Je suis un client</h3>
+
+    <label for="username">Email</label>
+    <input name="email" type="email" placeholder="Email" id="username">
+
+    <label for="password">Password</label>
+    <input name="password" type="password" placeholder="Password" id="password">
+
+    <button>Se connecter</button>
+</form>
+</div>
+
 </body>
 </html>

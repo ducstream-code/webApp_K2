@@ -73,7 +73,7 @@ include ('../includes/check_session.php');
             <input class="shop_sort_search" type="text" placeholder="Recherche">
             <h2>Catégories:</h2>
             <div class="shop_categories_container">
-                <button class="shop_categorie">Alimentation</button>
+                <button class="shop_categorie"><ion-icon name="fast-food-outline"></ion-icon> Alimentation</button>
                 <button class="shop_categorie">Voyage</button>
                 <button class="shop_categorie">Mode</button>
                 <button class="shop_categorie">Automobile</button>
@@ -82,6 +82,9 @@ include ('../includes/check_session.php');
 
         </div>
         <div class="shop_display">
+            <!-- TODO Sort product and not offers -->
+
+
             <?php
             $stmt = $db->prepare("SELECT briev_description, store_image FROM discounts LIMIT 6");
             $stmt->execute();
@@ -148,7 +151,7 @@ include('../includes/message.php');
         </div>
         <div class="second_section_paragraph">
             <img src="../assets/images/icons/check.svg">
-            <h4>blablablablablablablablablablablablablablablablablabla.</h4>
+            <h4>isla de muerta.</h4>
         </div>
         <div class="button_container">
             <button class="section_button" onclick="shopBigBubble()">Voir la boutique</button>

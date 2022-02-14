@@ -1,5 +1,5 @@
 <?php
-include ('../includes/check_session.php');
+include('../includes/check_session.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -21,37 +21,37 @@ include ('../includes/check_session.php');
 
 <body>
 <?php
-include ("../includes/header.php");
+include("../includes/header.php");
 ?>
 
+<body>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form action="../php/login/register.php" method="post">
+    <h3>S'inscrire</h3>
 
+    <label for="username">Email</label>
+    <input name="email" type="email" placeholder="Email" id="username">
 
-    <div class="login_type" id="login_type_container">
-        <div class="card" style="width: 18rem;">
-            <img src="/assets/images/logos/logo-500px.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Inscription Entreprise</h5>
-                <p class="card-text">Si vous possedez une entreprise et que vous avez déjà un compte, vous pouvez vous connecter</p>
+    <label for="name">Entreprise</label>
+    <input name="name" type="text" placeholder="Entreprise" id="name">
 
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">A partir de 9.99€</small>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;" onclick="growFormUser()">
-            <img src="/assets/images/logos/logo-500px.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Inscription client</h5>
-                <p class="card-text">Créez vous dès maintenant votre compte client</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Souscrivez gratuitement</small>
-            </div>
-        </div>
-    </div>
+    <label for="earnings">Chiffre d'affaire en €</label>
+    <input name="earnings" type="number" step=".01" placeholder="Chiffre d'affaire" id="earnings">
 
+    <label for="password">Password</label>
+    <input name="password" type="password" placeholder="Password" id="password">
 
-<form action="../php/register.php" method="post" class="user_register_form" id="user_register_form" >
+    <button>S'inscrire</button>
+</form>
+<?php include('../includes/message.php');?>
+</body>
+<script src="/js/register.js"></script>
+</html>
+<!---
+ <form action="../php/register.php" method="post" class="user_register_form" id="user_register_form" >
 
     <h1 class="user_form_title">S'inscrire chez Loyalty Card</h1>
     <div class="names">
@@ -70,23 +70,3 @@ include ("../includes/header.php");
         <button class="cancel_button" type="button" onclick="lowFormUser()">Annuler</button>
     </div>
     </form>
-
-
-</div>
-<?php include ('../includes/message.php');?>
-</body>
-<script src="/js/register.js"></script>
-</html>
-<!---
- <div class="names">
-        <input type="text" placeholder="Prénom">
-        <input type="text" placeholder="Nom">
-    </div>
-
-        <input class="user_email" type="email" placeholder="Email">
-        <input class="user_password" type="password" placeholder="Mot de passe">
-    <div class="checkbox_align">
-        <input type="checkbox" id="user_conf">
-        <label style="color: white" for="user_conf">J'ai lu et j'accepte les conditions générales d'utilisation et la Charte de confidentialité, et je reconnais avoir plus de 18 ans.</label>
-    </div>
-    <input class="submit" type="submit" placeholder="Créer mon compte gratuitement">

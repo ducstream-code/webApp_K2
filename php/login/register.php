@@ -9,14 +9,11 @@ session_start();
 include('../includes/db.php');
 
 
-$username = $_POST['username'];
+
 $email = $_POST['email'];
 $name = $_POST['name'];
-$firstname = $_POST['firstname'];
+$earnings = $_POST['earnings'];
 $password = $_POST['password'];
-
-echo $password;
-echo $username;
 
 if ((!isset($email)) || empty($email)) { //verify if email is set
     header('location: ../pages/register.php?message=Un email est necessaire.&type=danger');
@@ -29,7 +26,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { //verify email
 }
 
 //recuperation du mail pour voir si il existe déjà dans la bdd
-$sql = "SELECT email FROM USERS WHERE email = :email";
+$sql = "SELECT email FROM clientscompanies WHERE email = :email";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':email', $email);
 $stmt->execute();
@@ -40,24 +37,6 @@ if($res){
     exit;
 }
 
-//verification nombre char username
-if (strlen($username) < 3 || strlen($username) > 20) {
-    header('location: ../pages/register.php?message=Le nom d\'utilisateur dois faire entre 3 et 20 charactères .&type=danger');
-    exit;
-}
-
-//recuperation du username pour voir si il existe déjà dans la bdd
-$sql = "SELECT username FROM users WHERE username = :username";
-$stmt = $db->prepare($sql);
-$stmt->execute([
-    'username' => $username,
-]);
-$res = $stmt->fetch();
-
-if($res){
-    header('location: ../pages/register.php?message=Ce nom d\'utilisateur existe déjà.&type=danger');
-    exit;
-}
 
 //check si il y a un mot de passe de determiné
 if (!isset($password) || empty($password)) {
@@ -79,25 +58,21 @@ if (!(preg_match("#^(.*[0-9]+.*)$#", $password) && preg_match("#^(.*[a-z]+.*)$#"
 
 //insertion des informations dans la base de donnée:
 
-$sql = "INSERT into USERS ( name, firstname, email, password, username) VALUES (:name, :firstname, :email, :password, :username)";
+$sql = "INSERT into clientscompanies ( name, email, password, earnings) VALUES (:name, :email, :password, :earnings)";
 $stmt = $db->prepare($sql);
-$res = $stmt->execute([
+$stmt->execute([
     'name' => $name,
-    'firstname' => $firstname,
+    'earnings' => $earnings,
     'email'=> $email,
-    'password'=>hash('sha256',$password),
-    'username'=>$username,
+    'password'=>hash('sha256',$password)
 ]);
 
-if(!$res){
-    header('location: ../signup.php?message=Erreur lors de l\'inscription.&type=danger');
-    exit;
-}
+
 
 // Email de validation de compte
 $hash = hash('sha512', random_bytes(15));
 
-$sql = "SELECT id FROM USERS WHERE email = :email";
+$sql = "SELECT id FROM clientscompanies WHERE email = :email";
 $stmt = $db->prepare($sql);
 $stmt->execute([
     'email' => $email,
