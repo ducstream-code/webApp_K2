@@ -17,7 +17,7 @@ $stmt->execute(['hash'=>$hash]);
 $res = $stmt->rowCount();
 $res2 = $stmt->fetch();
 
-if ($res < 1){
+if ($res !=1){
     header('location: ../index.php?message=Erreur.&type=danger');
     exit;
 }
