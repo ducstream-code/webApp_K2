@@ -12,18 +12,28 @@ include('../../includes/check_session.php');
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+$stmt = $db->prepare("SELECT id FROM clientscompanies WHERE email = :email");
+$stmt->execute(['email'=>$email]);
+$isEmail = $stmt->fetch();
+
+if($isEmail){
+    header('location: ../../pages/login.php?message=Mail déjà utilisé.&type=danger');
+    exit;
+}
+
+
 if ((!isset($_POST['email'])) || empty($_POST['email'])) {
-    header('location: ../pages/login.php?message=Vous devez remplir tous les champs.&type=danger');
+    header('location: ../../pages/login.php?message=Vous devez remplir tous les champs.&type=danger');
     exit;
 }
 
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    header('location: ../pages/login.php?message=Email invalide.&type=danger');
+    header('location: ../../pages/login.php?message=Email invalide.&type=danger');
     exit;
 }
 
 if ((!isset($_POST['password'])) || empty($_POST['password'])) {
-    header('location: ../pages/login.php?message=Vous devez remplir tous les champs.&type=danger');
+    header('location: ../../pages/login.php?message=Vous devez remplir tous les champs.&type=danger');
     exit;
 }
 
