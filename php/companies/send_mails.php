@@ -44,7 +44,7 @@ Cher ' . $line . ',
 Votre entreprise vous à inscris sur loyaltyCard!
 
 Veuillez cliquer sur ce lien pour vérifier votre email et créer votre compte:
-https://aurelienk.space/pages/client_register.php?email='.$line.'&hash='.$hash.'&r='.$r .'
+https://aurelienk.space/pages/client_register.php?email='.rtrim($line).'&hash='.$hash.'&r='.$r .'
 
 ';
         $headers = 'From:noreply@loyaltycard.fr' . "\r\n";
@@ -58,5 +58,6 @@ https://aurelienk.space/pages/client_register.php?email='.$line.'&hash='.$hash.'
     echo 'error';
 }
 
+header('location: ../../../pages/company_admin/index.php');
 
 ?>
