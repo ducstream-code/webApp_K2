@@ -17,10 +17,7 @@ $stmt->execute(['hash'=>$hash]);
 $res = $stmt->rowCount();
 $res2 = $stmt->fetch();
 
-if ($res !=1){
-    header('location: ../index.php?message=Erreur.&type=danger');
-    exit;
-}
+
 $stmt = $db->prepare("SELECT verified FROM clientscompanies WHERE email =:email");
 $stmt->execute(['email'=>$mail]);
 $res3 = $stmt->fetch();
