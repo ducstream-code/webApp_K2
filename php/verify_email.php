@@ -23,7 +23,7 @@ $stmt->execute(['email'=>$mail]);
 $res3 = $stmt->fetch();
 
 if($res3['verified'] = 1){
-    header('location:../pages/login.php?message=Vous avez déjà vérifié votre mail&type=danger');
+    echo $res3;
 }
 
 else{
