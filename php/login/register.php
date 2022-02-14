@@ -16,12 +16,12 @@ $earnings = $_POST['earnings'];
 $password = $_POST['password'];
 
 if ((!isset($email)) || empty($email)) { //verify if email is set
-    header('location: ../pages/register.php?message=Un email est necessaire.&type=danger');
+    header('location: ../../pages/register.php?message=Un email est necessaire.&type=danger');
     exit;
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { //verify email
-    header('location: ../pages/register.php?message=Le format du mail n\'est pas valide.&type=danger');
+    header('location: ../../pages/register.php?message=Le format du mail n\'est pas valide.&type=danger');
     exit;
 }
 
@@ -33,26 +33,26 @@ $stmt->execute();
 $res = $stmt->fetch();
 
 if($res){
-    header('location: ../pages/register.php?message=Ce mail est déjà utilisé.&type=danger');
+    header('location: ../../pages/register.php?message=Ce mail est déjà utilisé.&type=danger');
     exit;
 }
 
 
 //check si il y a un mot de passe de determiné
 if (!isset($password) || empty($password)) {
-    header('location: ../pages/register.php?message=Vous devez définir un mot de passe.&type=danger');
+    header('location: ../../pages/register.php?message=Vous devez définir un mot de passe.&type=danger');
     exit;
 }
 
 //check longueur du mot de passe
 if (strlen($password) < 6 || strlen($password) > 32) {
-    header('location: ../pages/register.php?message=Le mot de passe doit faire entre 6 et 32 charactères.&type=danger');
+    header('location: ../../pages/register.php?message=Le mot de passe doit faire entre 6 et 32 charactères.&type=danger');
     exit;
 }
 
 //check complexitée du mot de passe
 if (!(preg_match("#^(.*[0-9]+.*)$#", $password) && preg_match("#^(.*[a-z]+.*)$#", $password) && preg_match("#^(.*[A-Z]+.*)$#", $password))) {
-    header('location: ../signup.php?message=Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre.&type=danger');
+    header('location: ../../register.php?message=Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre.&type=danger');
     exit;
 }
 
