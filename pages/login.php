@@ -7,7 +7,7 @@ include('../includes/check_session.php');
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="icon" type="image/png" href=""/>
     <meta charset="utf-8">
     <meta name="viewport" content="width-device-width, initial-scale=1">
@@ -24,7 +24,7 @@ include('../includes/check_session.php');
 
 <body>
 <?php
-include("../includes/message.php");
+
 include("../includes/header.php");
 ?>
 <div class="container">
@@ -56,6 +56,8 @@ include("../includes/header.php");
     <button>Se connecter</button>
 </form>
 </div>
-
+<?php
+include("../includes/message.php");
+?>
 </body>
 </html>

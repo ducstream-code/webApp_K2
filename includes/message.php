@@ -5,7 +5,25 @@ if (isset($_GET['message']) && !empty($_GET['message']) && isset($_GET['type']) 
 
 
 ?>
-<div class="alert_container">
+        <style>
+            .alert_container{
+                position: absolute !important;
+                top: 12vh;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                cursor: pointer;
+            }
+            .alert{
+                margin-bottom: 0 !important;
+                width: 40%
+            }
+            .alert p{
+                margin-bottom: 0!important;
+            }
+        </style>
+<div class="alert_container" onclick="this.remove()">
     <div class="alert alert-<?=$_GET['type'] ?>" role="alert">
         <p><?= htmlspecialchars($_GET['message']) ?></p>
     </div>
