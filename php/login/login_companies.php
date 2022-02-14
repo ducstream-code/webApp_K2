@@ -12,14 +12,7 @@ include('../../includes/check_session.php');
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$stmt = $db->prepare("SELECT id FROM clientscompanies WHERE email = :email");
-$stmt->execute(['email'=>$email]);
-$isEmail = $stmt->fetch();
 
-if($isEmail){
-    header('location: ../../pages/login.php?message=Mail déjà utilisé.&type=danger');
-    exit;
-}
 
 
 if ((!isset($_POST['email'])) || empty($_POST['email'])) {
