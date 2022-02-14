@@ -80,7 +80,7 @@ $stmt->execute([
 
 $res = $stmt->fetch();
 
-$sql = "INSERT INTO VERIFY_EMAIL (userID,hash) VALUES (:userid, :hash)";
+$sql = "INSERT INTO register_mail (userID,hash) VALUES (:userid, :hash)";
 $stmt = $db->prepare($sql);
 $stmt->execute([
     'userid'=> $res['id'],
@@ -101,4 +101,4 @@ $headers = 'From:noreply@loyaltycard.fr' . "\r\n";
 mail($_POST['email'], 'Inscription | Verification', $message, $headers);
 
 
-header('location: /index.php?message=Le compte a bien été crée, vous pouvez désormais vous connecter&type=success');
+header('location: ../../index.php?message=Le compte a bien été crée, vous pouvez désormais vous connecter&type=success');
