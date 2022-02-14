@@ -44,4 +44,4 @@ setcookie('id', $res['id'], time() + 60 * 60 * 24 * 30, '/');
 setcookie('password', $res['password'], time() + 60 * 60 * 24 * 30, '/');
 
 
-header('location: ../index.php');
+header('location: ../pages/company_admin/index.php');
