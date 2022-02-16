@@ -100,6 +100,7 @@ include ('includes/check_session.php');
 </div>
 
 
-<?php include ('./includes/message.php');?>
+
     </body>
+    <?php include ('./includes/message.php');?>
 </html>

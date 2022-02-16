@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 include ('../includes/db.php');
 include ('../includes/check_session.php');
 $mail = $_GET['email'];
-
+$referrer = $_GET['r'];
 
 $hash = $_GET['hash'];
 
@@ -56,16 +56,23 @@ include("../includes/header.php");
     <div class="shape"></div>
     <div class="shape"></div>
 </div>
-<form action="../php/login/register.php" method="post">
+<form action="../php/login/client_register.php" method="post">
     <h3>S'inscrire</h3>
 
-    <label for="username">Email</label>
-    <input name="email" value="<?=$mail ?>" type="email" placeholder="Email" id="username" disabled>
+    <label for="email">Email</label>
+    <input name="email" value="<?=$mail ?>" type="email" placeholder="Email" id="email" readonly>
 
-    <label for="password">Password</label>
-    <input name="password" type="password" placeholder="Password" id="password">
+    <label for="name">Nom</label>
+    <input type="text" placeholder="Nom" name="name" id="name">
+
+    <label for="firstname">Prénom</label>
+    <input type="text" placeholder="Prénom" name="firstname" id="firstname">
+
+    <label for="password">Mot de passe</label>
+    <input name="password" type="password" placeholder="Mot de passe" id="password">
 
     <button>S'inscrire</button>
+    <input hidden value="<?=$referrer?> " name="referer">
 </form>
 <?php include('../includes/message.php');?>
 </body>

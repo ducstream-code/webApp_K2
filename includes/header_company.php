@@ -86,7 +86,7 @@
         <button onclick="window.location='../pages/contact.php'">Contact</button>
     </div>
     <div class="header_login">
-        <button onclick="window.location='/pages/profile.php'">Deconnexion</button>
+        <button onclick="window.location='/includes/logout.php'">Deconnexion</button>
 
     </div>
 </header>

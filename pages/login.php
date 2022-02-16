@@ -2,6 +2,7 @@
 
 include('../includes/db.php');
 include('../includes/check_session.php');
+checkLoggedUser() ? header('location: ../index.php?message=Vous êtes déjà connectés&type=danger') : ''
 ?>
 
 <!DOCTYPE html>

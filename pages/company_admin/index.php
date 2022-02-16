@@ -88,6 +88,12 @@ $res = $stmt->fetch();
     </label>
 
     <button>Ajouter de clients</button>
+    <button type="button" onclick="document.getElementById('send_mail').style.display='none'">Fermer</button>
 </form>
+
+
+<script>
+
+</script>
 </body>
 </html>
