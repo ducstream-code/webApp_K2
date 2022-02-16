@@ -5,10 +5,13 @@ if ($_COOKIE['role']!=1){
     header('location:http://localhost:81/');
 }
 
-$stmt = $db->prepare("SELECT id FROM clientscompanies WHERE id = :id ");
+$stmt = $db->prepare("SELECT id, verified FROM clientscompanies WHERE id = :id ");
 $stmt->execute(['id'=>$_COOKIE['id']]);
 $res = $stmt->fetch();
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
@@ -20,7 +23,23 @@ $res = $stmt->fetch();
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>Section entreprise</title>
 </head>
-<?php include '../../includes/header_company.php'?>
+<?php
+if ($res['verified'] == 1){
+?>
+<div class="waiting_container">
+    <div class="waiting_data">
+        <h3>Nous allons revenir vers vous par email afin de proceder à des verification.</h3>
+        <h4>Il se peut que certaines personnes cherchent a se faire passer pour des entreprises</h4>
+
+
+        <button onclick="window.location='/includes/logout.php'">Se deconnecter</button>
+
+    </div>
+</div>
+<?php
+}elseif($res['verified'] == 2){
+
+    include '../../includes/header_company.php'?>
 <body>
 
 <div class="container">
@@ -97,3 +116,7 @@ $res = $stmt->fetch();
 </script>
 </body>
 </html>
+<?php
+}
+
+?>
