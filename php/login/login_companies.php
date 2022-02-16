@@ -39,11 +39,6 @@ $stmt->execute([
 ]);
 $res = $stmt->fetch();
 
-if($res['verified'] == 0){
-    header('location: ../../pages/login.php?message=Vous devez valider votre mail avant de pouvoir vous connecter.&type=danger');
-    exit;
-}
-
 if (!$res) {
     header('location: ../../pages/login.php?message=Identifiants incorrects.&type=danger');
     exit;

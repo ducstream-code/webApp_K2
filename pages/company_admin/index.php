@@ -5,7 +5,7 @@ if ($_COOKIE['role']!=1){
     header('location:http://localhost:81/');
 }
 
-$stmt = $db->prepare("SELECT id, verified FROM clientscompanies WHERE id = :id ");
+$stmt = $db->prepare("SELECT id, verified, email FROM clientscompanies WHERE id = :id ");
 $stmt->execute(['id'=>$_COOKIE['id']]);
 $res = $stmt->fetch();
 
@@ -35,7 +35,9 @@ if ($res['verified'] == 1){
         <button onclick="window.location='/includes/logout.php'">Se deconnecter</button>
 
     </div>
+
 </div>
+    <?php include ('../../includes/message.php');?>
 <?php
 }elseif($res['verified'] == 2){
 
@@ -114,9 +116,21 @@ if ($res['verified'] == 1){
 <script>
 
 </script>
+<?php include ('../../includes/message.php');?>
 </body>
 </html>
 <?php
-}
-
+}elseif($res['verified'] == 0){
 ?>
+    <div class="waiting_container">
+        <form class="waiting_data" action="../../php/companies/send_verify_email.php" method="post" enctype="multipart/form-data">
+            <h3>Veuillez verifier votre mail avant de continuer</h3>
+            <input hidden value="<?=$res['email']?>">
+
+            <button>Envoyer le mail</button>
+
+        </form>
+    </div>
+    <?php include ('../../includes/message.php');?>
+<?php
+}
