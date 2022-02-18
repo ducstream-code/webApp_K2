@@ -2,8 +2,15 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="965f0331-0518-4b8c-bcfd-6cac0c914270" name="aurelienk.space">
-        <fileTransfer accessType="SFTP" host="152.228.218.3" port="22" sshConfigId="7ea9e74d-81e8-4942-b061-99ec4f4f1510" sshConfig="aurelienk.space@152.228.218.3:22 password">
+      <webServer id="e617c1ef-0bd0-4914-8e06-2ff7f5122b73" name="testRF">
+        <fileTransfer rootFolder="/var/www/vhosts/aurelienk.space/test2.aurelienk.space/" accessType="SFTP" host="152.228.218.3" port="22" sshConfigId="7ea9e74d-81e8-4942-b061-99ec4f4f1510" sshConfig="aurelienk.space@152.228.218.3:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="462fb461-23fe-42c8-b1f2-07a88fc9c5cc" name="test" url="http://152.228.218.3">
+        <fileTransfer host="152.228.218.3" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

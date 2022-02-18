@@ -17,12 +17,16 @@ include ('../includes/check_session.php');
             crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+    <script src="../../js/offer_page.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 
     <title>Nos offres</title>
 </head>
 
-<body id="body">
+<body id="body" onload="loadOffers(),loadProducts()">
 <div class="offers_container" id="offers_container">
     <div class="offers_header" onclick="littleBubble()">
         <h1>Offres</h1>
@@ -40,23 +44,13 @@ include ('../includes/check_session.php');
             <button class="categorie">Automobile</button>
             <button class="categorie">Entretien</button>
             </div>
-
+            <div class="offer_page change">
+                <button onclick="moreOffers()">page suivante</button>
+                <button onclick="lessOffers()">page précedente</button>
+            </div>
         </div>
-        <div class="offers_display">
-                <?php
-                $stmt = $db->prepare("SELECT briev_description, store_image FROM discounts LIMIT 6");
-                $stmt->execute();
-                $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($res as $key => $discount){
-                    ?>
-                    <div class="offer">
-                        <img src="<?=$discount['store_image'] ?>">
-                        <hr>
-                        <h3><?=$discount['briev_description'] ?></h3>
-                    </div>
-                    <?php
-                }
-                ?>
+        <div class="offers_display animate__animated animate__backInDown" id="offers_display">
+        //ajax generated
 
         </div>
     </div>
@@ -79,26 +73,12 @@ include ('../includes/check_session.php');
                 <button class="shop_categorie">Automobile</button>
                 <button class="shop_categorie">Entretien</button>
             </div>
-
+            <button onclick="moreProducts()">page suivante</button>
+            <button onclick="lessProducts()">page précedente</button>
         </div>
-        <div class="shop_display">
-            <!-- TODO Sort product and not offers -->
+        <div class="shop_display animate__animated animate__backInDown" id="shop_display">
+            //ajax generated
 
-
-            <?php
-            $stmt = $db->prepare("SELECT briev_description, store_image FROM discounts LIMIT 6");
-            $stmt->execute();
-            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($res as $key => $discount){
-                ?>
-                <div class="offer">
-                    <img src="<?=$discount['store_image'] ?>">
-                    <hr>
-                    <h3><?=$discount['briev_description'] ?></h3>
-                </div>
-                <?php
-            }
-            ?>
 
         </div>
     </div>

@@ -9,7 +9,14 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="aurelienk.space">
+      <paths name="test">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="testRF">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
