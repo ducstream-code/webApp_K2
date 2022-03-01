@@ -64,21 +64,21 @@ include '../includes/db.php';
                         <td class="text-center">
                                 <?php if($company['verified'] == 1){
                                     echo '
-                                    <select class="bg-gray-300 w-48 rounded p-2">
+                                    <select onchange="changeStatus('.$company['id'].')" class="bg-gray-300 w-48 rounded p-2" id="statusSelect_'.$company['id'].'">
                                     <option value="'.$company['verified'].'">Awaiting verif</option>
                                     <option value="2">Awaiting Payment</option> 
                                     <option class="bg-green-400" value="3">Completed</option> 
                                     </select>';
                                 }elseif ($company['verified'] == 2){
                                     echo '
-                                    <select class="bg-gray-300 w-48 rounded p-2 ">
+                                    <select onchange="changeStatus('.$company['id'].')" class="bg-gray-300 w-48 rounded p-2 " id="statusSelect_'.$company['id'].'">
                                     <option value="'.$company['verified'].'">Awaiting Payment</option> 
                                     <option value="1">Awaiting verif</option>
                                     <option class="bg-green-400" value="3">Completed</option>
                                     </select>';
                                 }elseif ($company['verified'] == 3){
                                     echo '
-                                    <select class="bg-green-300 w-48 rounded p-2">
+                                    <select onchange="changeStatus('.$company['id'].')" class="bg-green-300 w-48 rounded p-2" id="statusSelect_'.$company['id'].'">
                                     <option class="bg-green-400" value="'.$company['verified'].'">Completed</option>
                                     <option value="2">Awaiting Payment</option> 
                                     <option value="1">Awaiting verif</option>

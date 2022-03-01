@@ -74,7 +74,8 @@ $stmt->execute([
     'name' => $name,
     'firstname' => $firstname,
     'email'=> $email,
-    'password'=>hash('sha256',$password)
+    'password'=>hash('sha256',$password),
+    'registrationDate'=> time()
 ]);
 
 //envoie mail de verification:

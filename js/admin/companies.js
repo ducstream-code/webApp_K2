@@ -52,3 +52,17 @@ function addCompany(){
     req.open('POST', '../php/admin/addCompany.php');
     req.send(formData);
 }
+
+function changeStatus(id){
+    let dropdown = document.getElementById('statusSelect_'+id)
+    let dropValue = dropdown.value;
+
+    const req = new XMLHttpRequest();
+    req.onreadystatechange = function()  {
+        if(req.readyState === 4 ) {
+            const data = req.response;
+        }
+    };
+    req.open('GET', '../php/admin/changeCompanyStatus.php?status='+dropValue+'&id='+id);
+    req.send();
+}
