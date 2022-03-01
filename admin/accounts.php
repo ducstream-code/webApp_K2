@@ -11,7 +11,7 @@ include '../includes/db.php';
 <html lang="fr" dir="ltr">
 <head>
     <? include '../includes/head.php'?>
-    <script src="../js/admin/companies.js"></script>
+    <script src="../js/admin/accounts.js"></script>
 
 
     <title>Comptes</title>
@@ -128,11 +128,11 @@ include '../includes/db.php';
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
                         <!-- Replace with your content -->
                         <div class="absolute inset-0 px-4 sm:px-6 mt-8">
-                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="companyName" placeholder="Company name">
-                            <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 "  id="companyEarnings" placeholder="Earnings">
-                            <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="companyEmail" placeholder="email">
-                            <input type="password" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="companyPassword" placeholder="Password">
-                            <button class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="addCompany()">Create</button>
+                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientName" placeholder="prénom">
+                            <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 "  id="clientFirstname" placeholder="nom de famille">
+                            <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientEmail" placeholder="email">
+                            <input type="password" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientPassword" placeholder="Password">
+                            <button class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="addAccount()">Create</button>
                             <div id="addCompanyResponse" class="text-2xl text-red-500 text-center"></div>
                         </div>
                     </div>
