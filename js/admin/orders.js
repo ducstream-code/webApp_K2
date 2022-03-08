@@ -27,14 +27,25 @@ function hideSlideOver(){
 
 
 function orderDetails(id){
+
+    document.getElementById('order_detail_container').style.display="block"
+    document.getElementById('grey_background').style.display="block"
+
     const req = new XMLHttpRequest();
     req.onreadystatechange = function()  {
         if(req.readyState ===  4 ){
             const data = req.response;
+            document.getElementById('order_detail_container').innerHTML=data;
+
 
         }
     };
     req.open('GET', '../php/admin/getOrderDetails.php?id_order='+id);
     req.send();
 
+}
+
+function closeOrderDetail(){
+    document.getElementById('order_detail_container').style.display="none"
+    document.getElementById('grey_background').style.display="none"
 }

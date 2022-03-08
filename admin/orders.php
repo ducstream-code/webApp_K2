@@ -58,7 +58,7 @@ include '../includes/db.php';
                 ?>
                     <tr>
                         <td class="text-left pl-12"><?= $order['id'] ?></td>
-                        <td class="text-center"><button><ion-icon name="eye-outline"></ion-icon></button></td>
+                        <td class="text-center"><button onclick="orderDetails(<?= $order['id'] ?>)"><ion-icon name="eye-outline"></ion-icon></button></td>
                         <td class="text-center"><?=$order['date']?></td>
                         <td class="text-center"><?= $order['status'] ?></td>
                         <td class="text-center"><?= $order['total'] ?></td>
@@ -140,37 +140,10 @@ include '../includes/db.php';
         </div>
     </div>
 </div>
-
-<div class="order_detail w-[600px]   z-50 bg-gray-200">
-    <div class="order_detail_header w-[600px]  h-16 bg-gray-100">
-        <h1>Commande n°</h1><h1>
-</h1>    </div>
-    <h1>Détails de Livraison</h1>
-    <div class="order_info w-[600px] p-4">
-        <h1>Adresse</h1>
-        <h1>Téléphone</h1>
-        <h1>Email</h1>
-    </div>
-    <div class=" order_info_table w-[600px] p-4">
-        <table class="w-full">
-            <thead>
-            <th class="text-left">Produit</th>
-            <th>Quantité</th>
-            <th class="text-right">Total</th>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Tshirt</td>
-                <td class="text-center">3</td>
-                <td class="text-right">78€</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="order_detail w-[600px] h-[350px] overflow-x-scroll   z-50 bg-gray-200" id="order_detail_container">
 
 </div>
-
-<div class="bg-gray-600 w-screen h-screen fixed z-20 top-0 opacity-25"></div>
+<div id="grey_background" class="bg-gray-600 w-screen h-screen fixed z-20 top-0 opacity-25"></div>
 </body>
 
 </html>

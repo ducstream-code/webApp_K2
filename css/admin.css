@@ -172,3 +172,13 @@ body, html
     left: 50%;
     top: 50%;
 }
+
+#order_detail_container
+{
+    display: none;
+}
+
+#grey_background
+{
+    display: none;
+}
