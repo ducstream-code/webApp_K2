@@ -28,7 +28,7 @@ include '../includes/db.php';
 
             </div>
         </div>
-        <div class="wrap pt-28 ">
+        <div class="wrap pt-20 ">
             <div class="cardBox">
                     <div class="card">
                         <div>
