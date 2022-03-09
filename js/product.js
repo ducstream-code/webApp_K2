@@ -5,6 +5,7 @@ function addToCart(uid,pid){
             data = req.response
             document.getElementById('addToCartButton').innerHTML="Ajouté au panier"
             document.getElementById('addToCartButton').setAttribute("onclick", "");
+            window.location='../pages/cart.php'
         }
     };
     req.open('GET', '../php/addToCart.php?uid='+uid+'&pid='+pid);

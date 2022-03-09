@@ -22,12 +22,12 @@ if($offset <= 0 ){
 
 
 
-$stmt = $db->prepare("SELECT name, image FROM products LIMIT 8 OFFSET $offset");
+$stmt = $db->prepare("SELECT id, name, image FROM products LIMIT 8 OFFSET $offset");
 $stmt->execute();
 $offers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($offers as $key => $offer){
     ?>
-    <div class="offer">
+    <div onclick="window.location='../../pages/product.php?p=<?=$offer['id']?>'" class="offer">
         <img src="<?=$offer['image'] ?>">
         <hr>
         <h3><?=$offer['name'] ?></h3>
