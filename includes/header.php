@@ -129,7 +129,7 @@ $uid = $_COOKIE['id'];
         <button onclick="window.location='../pages/contact.php'">Contact</button>
     </div>
     <div class="header_login">
-        <?= checkLoggedUser() ? '<button onclick="window.location=\'/pages/profile.php\'">Mon compte</button><button onclick="window.location=\'/includes/logout.php\'">Déconnexion</button><button onmouseout="hideCart()" onmouseover="displayCart()">Mon panier</button>' : '<button onclick="window.location=\'../pages/login.php\'">Se connecter</button>
+        <?= checkLoggedUser() ? '<button onclick="window.location=\'/pages/profile.php\'">Mon compte</button><button onclick="window.location=\'/includes/logout.php\'">Déconnexion</button><button onclick="window.location=\'../pages/cart.php\'" onmouseout="hideCart()" onmouseover="displayCart()">Mon panier</button>' : '<button onclick="window.location=\'../pages/login.php\'">Se connecter</button>
         <button onclick="window.location=\'../pages/register.php\'">S\'inscrire</button>' ?>
     </div>
 

@@ -5,11 +5,7 @@ $id = $_GET['p'];
 $uid = $_COOKIE['id'];
 $_SESSION['id'] = $uid;
 checkLoggedUser() ? '' : header('Location: ../index.php')
-
-//get product info
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
