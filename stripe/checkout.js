@@ -35,7 +35,7 @@ async function handleSubmit(e) {
         elements,
         confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://localhost:80/stripe/confirm.php",
+            return_url: "https://aurelienk.space/stripe/confirm.php",
         },
     });
 

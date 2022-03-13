@@ -74,3 +74,30 @@ function hideSlideOver(){
     });
     document.getElementById('body').style.overflow='auto';
 }
+
+function goCheckout(uid){
+
+    let address = document.getElementById('orderAddress').value;
+    let city = document.getElementById('orderCity').value;
+    let name = document.getElementById('orderName').value;
+    let firstname = document.getElementById('orderFirstname').value;
+    let mail = document.getElementById('orderEmail').value;
+    let postCode = document.getElementById('orderPC').value;
+    //let phone = document.getElementById('orderPhone').value;
+
+    let resLocation = document.getElementById('goToCheckoutRes')
+    const req = new XMLHttpRequest();
+    req.onreadystatechange = function()  {
+        if(req.readyState === 4 ){
+            data = req.response
+            if(data === 'ok'){
+                window.location='../stripe/checkout.php'
+            }else{
+                resLocation.innerHTML= data;
+            }
+
+        }
+    };
+    req.open('GET', '../php/createOrder.php?uid='+uid+'&address='+address +'&city='+city +'&name='+name +'&firstname='+firstname +'&mail='+mail +'&PC='+postCode+'&phone=01');
+    req.send();
+}

@@ -133,15 +133,18 @@ include('../includes/message.php');
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
                         <!-- Replace with your content -->
                         <div class="absolute inset-0 px-4 sm:px-6 mt-8">
-                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientName" placeholder="Adresse">
-                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " placeholder="Ville">
-                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 "  placeholder="Code Postal">
-                            <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 "  id="clientFirstname" placeholder="Nom">
-                            <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientEmail" placeholder="Prénom">
-                            <input type="password" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientPassword" placeholder="email">
+                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderAddress" placeholder="Adresse">
+                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderCity" placeholder="Ville">
+                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderPC"  placeholder="Code Postal">
+                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderName" placeholder="Nom">
+                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderFirstname" placeholder="Prénom">
+                            <input  type="email" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderEmail" placeholder="email">
                             <h1 id="order_total"></h1>
-                            <button class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="">Procéder au paiement</button>
+                            <button  class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="goCheckout(<?=$_COOKIE['id']?>)">Procéder au paiement</button>
                             <div id="addCompanyResponse" class="text-2xl text-red-500 text-center"></div>
+                            <div>
+                                <h1 id="goToCheckoutRes" class="text-2xl text-red-500 text-center"></h1>
+                            </div>
 
                         </div>
                     </div>
