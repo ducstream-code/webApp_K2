@@ -38,14 +38,14 @@ if($response->isSuccessful()) {
         die('Erreur : ' . $e->getMessage());
     }
 
-    $stmt = $db->prepare("DELETE FROM orders cart")
+    $stmt = $db->prepare("UPDATE orders SET status = 1 WHERE");
 
 
 
 
 
-    header('Location: ./success.php');
+    header('Location: ../pages/order_success.php');
 } else {
     $_SESSION['payment_error'] = $response->getMessage();
-    header('Location: ./failed.php');
+    header('Location: ../pages/order_error.php');
 }

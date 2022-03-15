@@ -139,6 +139,7 @@ include('../includes/message.php');
                             <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderName" placeholder="Nom">
                             <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderFirstname" placeholder="Prénom">
                             <input  type="email" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderEmail" placeholder="email">
+                            <input  type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="orderPhone" placeholder="Phone">
                             <h1 id="order_total"></h1>
                             <button  class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="goCheckout(<?=$_COOKIE['id']?>)">Procéder au paiement</button>
                             <div id="addCompanyResponse" class="text-2xl text-red-500 text-center"></div>

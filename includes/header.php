@@ -1,5 +1,5 @@
 <?php
-$uid = $_COOKIE['id'];
+
 ?>
 <style>
     header{
@@ -119,7 +119,7 @@ $uid = $_COOKIE['id'];
 </style>
 <header>
     <div class="header_logo">
-        <img onclick="window.location='../index.php'" src="../assets/images/logos/logo-500px.png"class="logo"></img>
+        <img onclick="window.location='../index.php'" src="../assets/images/logos/logo-500px.png" class="logo">
     </div>
     <div class="header_buttons">
         <button onclick="window.location='../index.php'" >Accueil</button>
@@ -129,7 +129,7 @@ $uid = $_COOKIE['id'];
         <button onclick="window.location='../pages/contact.php'">Contact</button>
     </div>
     <div class="header_login">
-        <?= checkLoggedUser() ? '<button onclick="window.location=\'/pages/profile.php\'">Mon compte</button><button onclick="window.location=\'/includes/logout.php\'">Déconnexion</button><button onclick="window.location=\'../pages/cart.php\'" onmouseout="hideCart()" onmouseover="displayCart()">Mon panier</button>' : '<button onclick="window.location=\'../pages/login.php\'">Se connecter</button>
+        <?= checkLoggedUser() ? '<button onclick="window.location=\'/pages/profile.php\'">Mon compte</button><button onclick="window.location=\'/includes/logout.php\'">Déconnexion</button><button onclick="window.location=\'../pages/cart.php\'" onmouseout="hideCart()" onmouseover="displayCart()">Mon panier</button>'  : '<button onclick="window.location=\'../pages/login.php\'">Se connecter</button>
         <button onclick="window.location=\'../pages/register.php\'">S\'inscrire</button>' ?>
     </div>
 

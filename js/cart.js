@@ -83,7 +83,7 @@ function goCheckout(uid){
     let firstname = document.getElementById('orderFirstname').value;
     let mail = document.getElementById('orderEmail').value;
     let postCode = document.getElementById('orderPC').value;
-    //let phone = document.getElementById('orderPhone').value;
+    let phone = document.getElementById('orderPhone').value;
 
     let resLocation = document.getElementById('goToCheckoutRes')
     const req = new XMLHttpRequest();
@@ -98,6 +98,6 @@ function goCheckout(uid){
 
         }
     };
-    req.open('GET', '../php/createOrder.php?uid='+uid+'&address='+address +'&city='+city +'&name='+name +'&firstname='+firstname +'&mail='+mail +'&PC='+postCode+'&phone=01');
+    req.open('GET', '../php/createOrder.php?uid='+uid+'&address='+address +'&city='+city +'&name='+name +'&firstname='+firstname +'&mail='+mail +'&PC='+postCode+'&phone='+phone);
     req.send();
 }
