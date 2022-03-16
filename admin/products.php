@@ -75,4 +75,4 @@ include '../includes/db.php';
     </div>
 </div>
 </body>
-</html>^ù*
+</html>
