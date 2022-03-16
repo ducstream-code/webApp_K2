@@ -80,4 +80,31 @@ $stmt->bindParam(':uid',$id_user);
 $stmt->bindParam(':total',$total);
 $stmt->execute();
 
+$stmt = $db->prepare("SELECT id FROM orders ORDER BY id DESC LIMIT 1
+");
+$stmt->execute();
+$id_order = $stmt->fetch();
+
+//echo $id_order['id']; //9
+
+$stmt = $db->prepare("SELECT * from cart WHERE id_user = :uid");
+$stmt->bindParam(':uid',$id_user);
+$stmt->execute();
+//echo $id_user; //6
+$orderedProduct = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($orderedProduct as $key=> $productorder){
+
+
+    $stmt =$db->prepare("INSERT INTO ordered_product (id_order, id_product,quantity) VALUES (:id_order,:id_product,:quantity)");
+    $stmt->bindParam(':id_order',$id_order['id']);
+    $stmt->bindParam(':id_product',$productorder['id_product']);
+    $stmt->bindParam(':quantity',$productorder['quantity']);
+    $stmt->execute();
+
+
+}
+
+
+
 echo 'ok';

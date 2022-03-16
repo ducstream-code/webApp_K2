@@ -8,7 +8,7 @@ include "../../includes/db.php";
 
 $id_order = $_GET['id_order'];
 
-$stmt = $db->prepare("SELECT id, address, phone, mail, id_customer FROM orders WHERE id = :id_order");
+$stmt = $db->prepare("SELECT id, address, phone, mail, id_customer,city,postal_code FROM orders WHERE id = :id_order");
 $stmt->bindParam(':id_order', $id_order);
 $stmt->execute();
 $customerInfo = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <h1><?=$userInfo['name'] ?></h1>
             <h1><?=$userInfo['firstname'] ?></h1>
-            <h1><?=$customerInfo['address'] ?></h1>
+            <h1><?=$customerInfo['address'].', '.$customerInfo['city'].', '.$customerInfo['postal_code'] ?></h1>
             <h1>0<?=$customerInfo['phone'] ?></h1>
             <h1><?=$customerInfo['mail'] ?></h1>
         </div>

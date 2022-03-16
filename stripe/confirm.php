@@ -38,7 +38,7 @@ if($response->isSuccessful()) {
         die('Erreur : ' . $e->getMessage());
     }
 
-    $stmt = $db->prepare("UPDATE orders SET status = 1 WHERE");
+   // $stmt = $db->prepare("UPDATE orders SET status = 1 WHERE");
 
 
 

@@ -60,8 +60,24 @@ include '../includes/db.php';
                         <td class="text-left pl-12"><?= $order['id'] ?></td>
                         <td class="text-center"><button onclick="orderDetails(<?= $order['id'] ?>)"><ion-icon name="eye-outline"></ion-icon></button></td>
                         <td class="text-center"><?=$order['date']?></td>
-                        <td class="text-center"><?= $order['status'] ?></td>
-                        <td class="text-center"><?= $order['total'] ?></td>
+                        <?php
+                            switch ($order['status']){
+                                case 0:
+                                    echo '<td class="flex justify-center "><p class="rounded w-32 bg-gray-300 text-center">Awaiting Payment</p></td>';
+                                    break;
+                                case 1:
+                                    echo '<td class="flex justify-center "><p class="rounded w-32 bg-green-400 text-center">Payment Complete</p></td>';
+                                    break;
+                                case 2:
+                                    echo '<td class="flex justify-center "><p class="rounded w-32 bg-red-400 text-center">Payment Refused</p></td>';
+                                    break;
+                                case 3:
+                                    echo '<td class="flex justify-center "><p class="rounded w-32 bg-orange-400 text-center">Payment refunded</p></td>';
+                                    break;
+
+                            }
+                        ?>
+                        <td class="text-center"><?= $order['total'] ?>€</td>
 
                     </tr>
                     <?php
