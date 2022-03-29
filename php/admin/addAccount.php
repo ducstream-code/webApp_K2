@@ -14,6 +14,7 @@ $email = $_POST['email'];
 $name = $_POST['name'];
 $firstname = $_POST['firstname'];
 $password = $_POST['password'];
+$username = $name.$firstname.rand(10000,999999);
 
 if ((!isset($name)) || empty($name)) { //verify if email is set
     echo 'un nom est necessaire';
@@ -68,14 +69,15 @@ if (!(preg_match("#^(.*[0-9]+.*)$#", $password) && preg_match("#^(.*[a-z]+.*)$#"
 
 //insertion des informations dans la base de donnée:
 
-$sql = "INSERT into users ( name,firstname, email, password ) VALUES (:name,:firstname, :email, :password )";
+$sql = "INSERT into users ( name,firstname, email, password,username ) VALUES (:name,:firstname, :email, :password, :username )";
 $stmt = $db->prepare($sql);
 $stmt->execute([
     'name' => $name,
     'firstname' => $firstname,
     'email'=> $email,
     'password'=>hash('sha256',$password),
-    'registrationDate'=> time()
+    'username'=> $username,
+
 ]);
 
 //envoie mail de verification:

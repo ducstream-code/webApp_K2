@@ -149,6 +149,27 @@ include '../includes/db.php';
                             <input type="password" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientPassword" placeholder="Password">
                             <button class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="addAccount()">Create</button>
                             <div id="addCompanyResponse" class="text-2xl text-red-500 text-center"></div>
+
+                            <?php
+                            $stmt = $db->prepare("SELECT * FROM products");
+                            $stmt->execute();
+                            $prList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($prList as $key => $product){
+                                ?>
+                                <div class="rounded bg-gray-300 h-16 w-full mt-6 flex justify-between place-items-center p-2 ">
+                                    <input type="checkbox" value="<?= $product['id']?>">
+                                    <img class="h-12" src="<?= $product['image']?>">
+                                    <h1><?= $product['name']?></h1>
+                                    <h1><?= $product['price']?>€</h1>
+                                </div>
+
+                            <?php
+                            }
+                            ?>
+
+
+
+
                         </div>
                     </div>
                 </div>

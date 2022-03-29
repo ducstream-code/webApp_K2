@@ -52,7 +52,7 @@ include '../includes/db.php';
                 </thead>
                 <tbody id="table_body">
                 <?php
-                $stmt = $db->prepare("SELECT * FROM users where status != 0");
+                $stmt = $db->prepare("SELECT * FROM users");
                 $stmt->execute();
                 $companies = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($companies as $key => $company) {
