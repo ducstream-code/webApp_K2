@@ -1,6 +1,3 @@
-<?php
-
-?>
 <style>
     header{
         position: absolute;
@@ -135,7 +132,7 @@
 
 </header>
 <div id="cart_container" class="cart_container" >
-    <div class="cart_result"">
+    <div class="cart_result">
         <h1>Votre Panier</h1>
         <hr>
         <table>
