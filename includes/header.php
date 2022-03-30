@@ -1,3 +1,7 @@
+<?php
+include('../includes/db.php');
+
+?>
 <style>
     header{
         position: absolute;
