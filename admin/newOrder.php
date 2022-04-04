@@ -10,7 +10,7 @@ include '../includes/db.php';
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-    <? include '../includes/head.php'?>
+    <?php include '../includes/head.php'?>
     <script src="../js/admin/orders.js"></script>
 
 

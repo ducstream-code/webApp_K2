@@ -10,7 +10,7 @@ include '../includes/db.php';
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-    <? include '../includes/head.php'?>
+    <?php include '../includes/head.php'?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <title>Admin panel</title>
@@ -18,7 +18,7 @@ include '../includes/db.php';
 
 <body id="body">
 <div class="container  flex  h-screen pr-16">
-    <? include "../includes/sidebar.php";
+    <?php include "../includes/sidebar.php";
     ?>
     <div class="main left-16">
 

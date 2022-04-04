@@ -11,7 +11,7 @@ include '../includes/db.php';
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-    <? include '../includes/head.php'?>
+    <?php include '../includes/head.php'?>
     <script src="../js/admin/orders.js"></script>
 
 
@@ -21,7 +21,7 @@ include '../includes/db.php';
 <body>
 
 <div class="container flex  h-screen pr-16">
-    <? include "../includes/sidebar.php";
+    <?php include "../includes/sidebar.php";
 
     ?>
 
