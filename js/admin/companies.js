@@ -66,3 +66,26 @@ function changeStatus(id){
     req.open('GET', '../php/admin/changeCompanyStatus.php?status='+dropValue+'&id='+id);
     req.send();
 }
+
+function deleteComp(uid){
+
+    if (confirm('Voulez vous supprimer cette entreprise ? ')) {
+        // Save it!
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function()  {
+            if(req.readyState === 4 ){
+                const data = req.response;
+                if(data == "ok") {
+                    document.getElementById('company_' + uid).remove();
+                }
+            }
+        };
+        req.open('GET', '../php/admin/deleteCompany.php?uid='+uid);
+        req.send();
+    } else {
+        // Do nothing!
+        console.log('Thing was not saved to the database.');
+    }
+
+
+}

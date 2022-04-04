@@ -48,6 +48,7 @@ include '../includes/db.php';
                 <th>Date</th>
                 <th>Etat</th>
                 <th>Total</th>
+                <th>action</th>
                 </thead>
                 <tbody id="table_body">
                 <?php
@@ -56,14 +57,14 @@ include '../includes/db.php';
                     $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($orders as $key => $order){
                 ?>
-                    <tr>
+                    <tr id="order_<?= $order['id'] ?>">
                         <td class="text-left pl-12"><?= $order['id'] ?></td>
                         <td class="text-center"><button onclick="orderDetails(<?= $order['id'] ?>)"><ion-icon name="eye-outline"></ion-icon></button></td>
                         <td class="text-center"><?=$order['date']?></td>
                         <?php
                             switch ($order['status']){
                                 case 0:
-                                    echo '<td class="flex justify-center "><p class="rounded w-32 bg-gray-300 text-center">Awaiting Payment</p></td>';
+                                    echo '<td class="flex justify-center "><p class="rounded w-40 bg-gray-300 text-center">Awaiting Payment</p></td>';
                                     break;
                                 case 1:
                                     echo '<td class="flex justify-center "><p class="rounded w-32 bg-green-400 text-center">Payment Complete</p></td>';
@@ -78,7 +79,7 @@ include '../includes/db.php';
                             }
                         ?>
                         <td class="text-center"><?= $order['total'] ?>€</td>
-
+                        <td class="text-center"><button class="bg-red-500 p-1 rounded" onclick="deleteOrder(<?= $order['id'] ?>)">Supprimer</button></td>
                     </tr>
                     <?php
                 }
@@ -138,7 +139,7 @@ include '../includes/db.php';
 
                 <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div class="px-4 sm:px-6 flex space-x-4 fixed z-50 bg-white w-full">
-                        <h2 class="text-lg font-medium text-gray-900  " id="slide-over-title">Add Company</h2>
+                        <h2 class="text-lg font-medium text-gray-900  " id="slide-over-title">Create Order</h2>
                     </div>
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
                         <!-- Replace with your content -->

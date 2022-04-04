@@ -53,3 +53,25 @@ function addAccount(){
         req.send(formData);
 
 }
+
+function deleteAccount(uid){
+
+    if (confirm('Voulez vous supprimer ce compte ? ')) {
+        // Save it!
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function()  {
+            if(req.readyState === 4 ){
+                const data = req.response;
+                if(data == "ok") {
+                    document.getElementById('account_' + uid).remove();
+                }
+            }
+        };
+        req.open('GET', '../php/admin/deleteAccount.php?uid='+uid);
+        req.send();
+    } else {
+        // Do nothing!
+    }
+
+
+}

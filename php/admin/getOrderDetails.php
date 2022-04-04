@@ -8,7 +8,7 @@ include "../../includes/db.php";
 
 $id_order = $_GET['id_order'];
 
-$stmt = $db->prepare("SELECT id, address, phone, mail, id_customer,city,postal_code FROM orders WHERE id = :id_order");
+$stmt = $db->prepare("SELECT id, address, phone, mail, id_customer,city,postal_code,name,firstname FROM orders WHERE id = :id_order");
 $stmt->bindParam(':id_order', $id_order);
 $stmt->execute();
 $customerInfo = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -16,7 +16,7 @@ $customerInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmt = $db->prepare("SELECT name, firstname FROM users WHERE id = :id_customer");
 $stmt->bindParam(':id_customer', $customerInfo['id_customer']);
 $stmt->execute();
-$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+$userInfo = $stmt->fetch();
 
 ?>
     <div>
@@ -27,8 +27,8 @@ $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
         <h1>Détails de Livraison</h1>
         <div class="order_info w-[600px] p-4">
 
-            <h1><?=$userInfo['name'] ?></h1>
-            <h1><?=$userInfo['firstname'] ?></h1>
+            <h1><?=$customerInfo['name'] ?></h1>
+            <h1><?=$customerInfo['firstname'] ?></h1>
             <h1><?=$customerInfo['address'].', '.$customerInfo['city'].', '.$customerInfo['postal_code'] ?></h1>
             <h1>0<?=$customerInfo['phone'] ?></h1>
             <h1><?=$customerInfo['mail'] ?></h1>

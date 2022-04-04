@@ -38,8 +38,26 @@ if ($res['verified'] == 1){
 
 </div>
     <?php include ('../../includes/message.php');?>
+
+
 <?php
-}elseif($res['verified'] == 2){
+}elseif ($res['verified']==2){
+ ?>
+    <div class="waiting_container">
+        <div class="waiting_data">
+            <h3>Désormais, afin que vos clients puissent profiter de nos offres et avantages, il est necessaire que vous payiez votre cotisation</h3>
+            <h4><button class="rounded ">Passer au paiement</button></h4>
+
+
+            <button onclick="window.location='/includes/logout.php'">Se deconnecter</button>
+
+        </div>
+
+    </div>
+    <?php include ('../../includes/message.php');?>
+
+   <?php
+}elseif($res['verified'] == 3){
 
     include '../../includes/header_company.php'?>
 <body>

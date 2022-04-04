@@ -27,7 +27,7 @@ if ((!isset($_POST['password'])) || empty($_POST['password'])) {
 }
 
 
-$sql = "SELECT email, password, id FROM users where email = :email AND password = :password";
+$sql = "SELECT email, password, id,role FROM users where email = :email AND password = :password";
 $stmt = $db->prepare($sql);
 $stmt->execute([
     'email'=>$email,
@@ -41,6 +41,7 @@ if(!$res){
 }
 setcookie('id', $res['id'], time()+60*60*24*30, '/');
 setcookie('password', $res['password'], time()+60*60*24*30, '/');
+setcookie('role', $res['role'], time()+60*60*24*30, '/');
 
 
 header('location: ../../index.php');

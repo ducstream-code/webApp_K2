@@ -57,13 +57,13 @@ include '../includes/db.php';
                 $companies = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($companies as $key => $company) {
                     ?>
-                    <tr>
+                    <tr id="account_<?=$company['id']?>">
                         <td class="text-center"><?= $company['id'] ?></td>
                         <td class="text-center"><?= $company['name'] ?></td>
                         <td class="text-center"><?= $company['firstname'] ?></td>
                         <td class="text-center"><?= $company['nbOrders'] ?></td>
-                        <td class="text-center"><?= $company['registrationDate'] ?></td>
-                        <td class="text-center"><button class="bg-red-500 p-2 rounded">Supprimer</button></td>
+                        <td class="text-center"><?= gmdate('d M Y H:i:s',strtotime($company['registrationDate'])) ?></td>
+                        <td class="text-center"><button class="bg-red-500 p-2 rounded" onclick="deleteAccount(<?=$company['id']?>)">Supprimer</button></td>
                     </tr>
                     <?php
                 }

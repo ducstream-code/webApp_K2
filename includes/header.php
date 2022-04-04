@@ -1,5 +1,5 @@
 <?php
-include('../includes/db.php');
+
 
 ?>
 <style>

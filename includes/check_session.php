@@ -22,6 +22,9 @@ function checkLoggedUser(){
             die($e);
         }
     }
-    $uid = $_COOKIE['id'];
+
+    if(isset($_COOKIE['id'])){
+        $uid = $_COOKIE['id'];
+        }
     return false;
 }

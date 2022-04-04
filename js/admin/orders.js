@@ -49,3 +49,22 @@ function closeOrderDetail(){
     document.getElementById('order_detail_container').style.display="none"
     document.getElementById('grey_background').style.display="none"
 }
+
+function deleteOrder(id_order){
+    if (confirm('Voulez vous supprimer cette commande ? ')) {
+        // Save it!
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function()  {
+            if(req.readyState === 4 ){
+                const data = req.response;
+                if(data == "ok") {
+                    document.getElementById('order_' + id_order).remove();
+                }
+            }
+        };
+        req.open('GET', '../php/admin/deleteOrder.php?id_order='+id_order);
+        req.send();
+    } else {
+        // Do nothing!
+    }
+}
