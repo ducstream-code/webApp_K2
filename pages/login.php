@@ -55,6 +55,8 @@ include("../includes/header.php");
     <input name="password" type="password" placeholder="Password" id="password">
 
     <button>Se connecter</button>
+    <a href="mailToChange.php">Mot de passe oublié ?</a>
+
 </form>
 </div>
 <?php
