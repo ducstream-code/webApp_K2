@@ -31,7 +31,7 @@ $product = $stmt->fetch();
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="../external/tailwind.js"></script>
-    <script src="../js/product.js";
+    <script src="../js/product.js"></script>
 
 
     <title><?=$product['name'] ?></title>
