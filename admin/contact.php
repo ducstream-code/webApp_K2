@@ -16,7 +16,7 @@ include '../includes/db.php';
     <title>Contact</title>
 </head>
 
-<body onload="loadContact()">
+<body onload="loadContact()" id="body">
 
 <div class="container flex  h-screen pr-16">
     <?php include "../includes/sidebar.php";
@@ -31,7 +31,7 @@ include '../includes/db.php';
             </div>
         </div>
         <div class="wrap p-24">
-            <div class="flex justify-between bg-white p-4 place-items-center rounded-t-2xl shadow">
+            <div class="flex justify-between bg-white p-4 place-items-center rounded-t-2xl shadow font">
                 <h1>Demandes de contact</h1>
                 <button class="rounded bg-white border-solid border-[2px] border-[#7764E4] p-2 text-[#7764E4] hover:bg-[#7764E4] hover:text-white">Export Data</button>
             </div>
@@ -60,6 +60,13 @@ include '../includes/db.php';
         </div>
     </div>
 </div>
+
+<div class="w-1/3  bg-gray-600 absolute translate-x-1/2 translate-y-1/2 top-0 ml-40 z-50 rounded-2xl p-4 hidden" id="contactDetail">
+
+
+
+</div>
+    <div id="grey_background" class="w-full h-full bg-gray-400 opacity-75 absolute top-0 z-20 hidden"></div>
 
 
 

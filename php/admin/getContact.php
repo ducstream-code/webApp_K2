@@ -12,12 +12,12 @@ foreach ($contacts as $key => $contact){
 
     ?>
     <tr class="h-16 pr-8">
-        <td class=""><ion-icon class="text-center w-full" name="eye-outline"></ion-icon></td>
+        <td class=""><ion-icon onclick="contactDetails(<?=$contact['id']?>)" class="text-center w-full" name="eye-outline"></ion-icon></td>
         <td class="text-center"><?=$contact['name']?></td>
         <td class="text-center"><?=$contact['date']?></td>
         <td class="text-center"><?=$contact['email']?></td>
 
-        <td class="text-center">
+        <td class="text-center" id="status_<?=$contact['id']?>">
             <?php
             switch ($contact['isAnswered']){
                 case 0:
