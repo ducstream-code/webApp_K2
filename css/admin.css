@@ -36,6 +36,16 @@ body, html
     background: #F0F0F1;
     transition: 0.5s;
 }
+
+.main2{
+    position: absolute;
+    width: calc(100% - 64px);
+
+    min-height: 100vh;
+    background: #F0F0F1;
+    transition: 0.5s;
+}
+
 .topbar
 {
     width: 100%;
@@ -124,9 +134,9 @@ body, html
     font-size: 3.5em;
     color: var(--black2);
 }
-.wrap .orders_table tbody tr:nth-child(even)
+.wrap tbody tr:nth-child(odd)
 {
-    background-color: #fff;
+    background-color: #F7FAFC;
 }
 
 .wrap table tbody tr td ion-icon

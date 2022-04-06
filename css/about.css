@@ -1,0 +1,85 @@
+.global {
+    background-color: white;
+    height: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.greyZone {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    margin: 0 auto;
+    width: 40rem;
+    height: 20rem;
+    background-color: rgba(196, 196, 196, 0.19);
+    border-radius: 15px;
+}
+
+.greenZone {
+    left: 0;
+
+    width: 100%; /* Taille : ici à 100% de la largeur de la fenêtre navigateur (à modifier selon le cas) */
+
+    height: 300px; /* Hauteur de cette DIV (exemple 200 px à modifier selon le cas) */
+
+    position: fixed; /* Pour fixer cette div afin qu'elle soit en permanence au bas de la fenêtre */
+
+    top: 90%; /* Sa position par rapport au haut de la fenêtre (100% pour n'importe quelle hauteur de fenêtre). Le 100% fait sortir la div de la fenêtre puisque par rapport à son coin supérieur gauche (Ne pas modifier) */
+
+    margin: -200px auto 0 auto; /* La valeur top (la première, donc ici -200 (négative)) fait revenir la div dans la fenêtre. Elle doit être identique à la hauteur de la div. Les "auto" sont là pour centrer la div si tu spécifies une largeur différente */
+
+    background-color: #61c38f;
+
+    padding: 0%;
+}
+
+.centered {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    text-align: center;
+}
+
+.mainText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    align-items: center;
+    text-align: center;
+    font-size: 28px;
+}
+
+.team {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    margin-top: -10px;
+    margin-left: 30px;
+    font-size: 50px;
+}
+
+.names {
+    color: #ffffff;
+}
+
+img {
+    width: 150px;
+    border-radius: 100%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
