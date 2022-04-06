@@ -17,6 +17,7 @@ include('../includes/db.php');
             crossorigin="anonymous"></script>
   <title>Contact</title>
   <link href="../css/contact.css" rel="stylesheet">
+    <script src="../js/contact.js"></script>
 </head>
 <body>
 
@@ -35,24 +36,24 @@ include('../includes/db.php');
         <div class="screen-body">
           <div class="screen-body-item left">
             <div class="app-title">
-              <span>CONTACTEZ</span>
-              <span>NOUS</span>
+              <span id="formRes">CONTACTEZ
+              NOUS</span>
             </div>
             <div class="app-contact">Numéro : +33 12 34 56 78 <br> Addresse : 8 RUE DE LA VILLE 18600 </div>
           </div>
           <div class="screen-body-item">
             <div class="app-form">
               <div class="app-form-group">
-                <input class="app-form-control" placeholder="VOTRE NOM">
+                <input class="app-form-control" id="name" placeholder="VOTRE NOM">
               </div>
               <div class="app-form-group">
-                <input class="app-form-control" placeholder="EMAIL">
+                <input class="app-form-control" id="email" placeholder="EMAIL">
               </div>
               <div class="app-form-group message">
-                <input class="app-form-control" placeholder="VOTRE MESSAGE">
+                <input class="app-form-control" id="message" placeholder="VOTRE MESSAGE">
               </div>
               <div class="app-form-group buttons">
-                <button class="app-form-button">SEND</button>
+                <button class="app-form-button" onclick="sendForm()">SEND</button>
               </div>
             </div>
           </div>
@@ -61,5 +62,9 @@ include('../includes/db.php');
     </div>
   </div>
 
+
+<script>
+
+</script>
 </body>
 </html>
