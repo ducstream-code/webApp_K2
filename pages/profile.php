@@ -14,7 +14,7 @@ $res = $stmt->fetch();
     <meta charset="UTF-8">
 
 
-    <title>Document</title>
+    <title>Mon profile</title>
     <script src="../external/tailwind.js"></script>
     <script src="../js/profile.js"></script>
     <style>

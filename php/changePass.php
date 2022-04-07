@@ -25,11 +25,11 @@ if (!(preg_match("#^(.*[0-9]+.*)$#", $password) && preg_match("#^(.*[a-z]+.*)$#"
     exit;
 }
 
-$hashPass = hash('sha256',$password);
+$hashPass = hash('sha256', $password);
 
 $stmt = $db->prepare("UPDATE users SET password = :password WHERE id = :id");
-$stmt->bindParam(':password',$hashPass);
-$stmt->bindParam(':id',$id);
+$stmt->bindParam(':password', $hashPass);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
 
 echo 'Mot de passe changé';

@@ -9,7 +9,6 @@ session_start();
 include('../../includes/db.php');
 
 
-
 $email = $_POST['email'];
 $name = $_POST['name'];
 $earnings = $_POST['earnings'];
@@ -32,7 +31,7 @@ $stmt->bindParam(':email', $email);
 $stmt->execute();
 $res = $stmt->fetch();
 
-if($res){
+if ($res) {
     header('location: ../../pages/register.php?message=Ce mail est déjà utilisé.&type=danger');
     exit;
 }
@@ -63,10 +62,9 @@ $stmt = $db->prepare($sql);
 $stmt->execute([
     'name' => $name,
     'earnings' => $earnings,
-    'email'=> $email,
-    'password'=>hash('sha256',$password)
+    'email' => $email,
+    'password' => hash('sha256', $password)
 ]);
-
 
 
 // Email de validation de compte
@@ -83,7 +81,7 @@ $res = $stmt->fetch();
 $sql = "INSERT INTO register_mail (email,hash) VALUES (:email, :hash)";
 $stmt = $db->prepare($sql);
 $stmt->execute([
-    'email'=> $email,
+    'email' => $email,
     'hash' => $hash,
 ]);
 
@@ -94,7 +92,7 @@ Cher ' . $_POST['name'] . ',
 Merci de vous être inscrit.e sur Loyalty Card!
 
 Veuillez cliquer sur ce lien pour vérifier votre email:
-https://aurelienk.space/php/send_verify_email.php?email='. $_POST['email'] . '&hash='. $hash . '
+https://aurelienk.space/php/send_verify_email.php?email=' . $_POST['email'] . '&hash=' . $hash . '
 
 ';
 $headers = 'From:noreply@loyaltycard.fr' . "\r\n";

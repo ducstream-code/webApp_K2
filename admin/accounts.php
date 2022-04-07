@@ -48,6 +48,7 @@ include '../includes/db.php';
                 <th>firstname</th>
                 <th>nbOrders</th>
                 <th>registration date</th>
+                <th>nbPoints</th>
                 <th>Action</th>
                 </thead>
                 <tbody id="table_body">
@@ -63,6 +64,7 @@ include '../includes/db.php';
                         <td class="text-center"><?= $company['firstname'] ?></td>
                         <td class="text-center"><?= $company['nbOrders'] ?></td>
                         <td class="text-center"><?= gmdate('d M Y H:i:s',strtotime($company['registrationDate'])) ?></td>
+                        <td class="text-center"><?= $company['solde'] ?></td>
                         <td class="text-center"><button class="bg-red-500 p-2 rounded" onclick="deleteAccount(<?=$company['id']?>)">Supprimer</button></td>
                     </tr>
                     <?php
