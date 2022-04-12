@@ -51,7 +51,7 @@ if (strlen($password) < 6 || strlen($password) > 32) {
 
 //check complexitée du mot de passe
 if (!(preg_match("#^(.*[0-9]+.*)$#", $password) && preg_match("#^(.*[a-z]+.*)$#", $password) && preg_match("#^(.*[A-Z]+.*)$#", $password))) {
-    header('location: ../../register.php?message=Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre.&type=danger');
+    header('location: ../../pages/register.php?message=Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre.&type=danger');
     exit;
 }
 

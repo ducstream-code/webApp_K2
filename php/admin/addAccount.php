@@ -14,7 +14,7 @@ $email = $_POST['email'];
 $name = $_POST['name'];
 $firstname = $_POST['firstname'];
 $password = $_POST['password'];
-$username = $name.$firstname.rand(10000,999999);
+$username = $name.$firstname.rand(10000,9999999);
 
 if ((!isset($name)) || empty($name)) { //verify if email is set
     echo 'un nom est necessaire';
