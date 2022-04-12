@@ -92,7 +92,7 @@ Cher ' . $_POST['name'] . ',
 Merci de vous être inscrit.e sur Loyalty Card!
 
 Veuillez cliquer sur ce lien pour vérifier votre email:
-https://aurelienk.space/php/send_verify_email.php?email=' . $_POST['email'] . '&hash=' . $hash . '
+https://aurelienk.space/php/companies/verify_email.php?email=' . $_POST['email'] . '&hash=' . $hash . '
 
 ';
 $headers = 'From:noreply@loyaltycard.fr' . "\r\n";
