@@ -13,7 +13,6 @@ $fileSize = $_FILES['fileToUpload']['size'];
 $fileType = $_FILES['fileToUpload']['type'];
 $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
-$mailSent = 0;
 
 $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
 $uploadFileDir = 'mail_lists/';
@@ -28,12 +27,12 @@ else
     $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
 }
 
-
+echo $message;
 /* read txt file, hash mail, and send mail*/
 
 $handle = fopen('mail_lists/'.$newFileName = md5(time() . $fileName) . '.' . $fileExtension, "r");
 echo $handle .'<br>';
-echo $handle .'<br>';
+echo $newFileName .'<br>';
 
 if ($handle) {
 
@@ -59,7 +58,7 @@ https://aurelienk.space/pages/client_register.php?email=' . rtrim($line) . '&has
 
 ';
             $headers = 'From:noreply@loyaltycard.fr' . "\r\n";
-            mail('aurelienkrief@gmail.com', 'Inscription loyaltyCard', $message, $headers);
+            mail('$line', 'Inscription loyaltyCard', $message, $headers);
 
 
         }
