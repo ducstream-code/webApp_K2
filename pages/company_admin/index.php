@@ -2,7 +2,7 @@
 include '../../includes/db.php';
 
 if ($_COOKIE['role']!=1){
-    header('location:http://localhost:81/');
+    header('location:https://www.aurelienk.space');
 }
 
 $stmt = $db->prepare("SELECT id, verified, email FROM clientscompanies WHERE id = :id ");
