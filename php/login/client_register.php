@@ -31,7 +31,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { //verify email
 }
 
 //recuperation du mail pour voir si il existe déjà dans la bdd
-$sql = "SELECT email FROM clientscompanies WHERE email = :email";
+$sql = "SELECT email FROM users WHERE email = :email";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':email', $email);
 $stmt->execute();
