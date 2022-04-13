@@ -30,7 +30,7 @@ else
 
 
 /* read txt file, hash mail, and send mail*/
-
+echo 'ok';
 
 $handle = fopen('mail_lists/'.$newFileName = md5(time() . $fileName) . '.' . $fileExtension, "r");
 if ($handle) {
