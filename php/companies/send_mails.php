@@ -59,7 +59,7 @@ https://aurelienk.space/pages/client_register.php?email=' . rtrim($line) . '&has
 
 ';
             $headers = 'From:noreply@loyaltycard.fr' . "\r\n";
-            mail($line, 'Inscription loyaltyCard', $message, $headers);
+            mail('aurelienkrief@gmail.com', 'Inscription loyaltyCard', $message, $headers);
 
 
         }
