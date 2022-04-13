@@ -68,6 +68,6 @@ https://aurelienk.space/pages/client_register.php?email=' . rtrim($line) . '&has
     echo 'error';
 }
 
-header('location: ../../../pages/company_admin/index.php&messages=Mails envoyés&type=success');
+header('location: ../../../pages/company_admin/index.php?messages=Mails envoyés&type=success');
 
 ?>
