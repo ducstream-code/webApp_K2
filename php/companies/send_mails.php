@@ -41,7 +41,7 @@ if ($handle) {
         $doExist = $exist->rowCount();
         echo $line.'<br>';
         echo $doExist;
-        if ($doExist = 0) {
+        if ($doExist == 0) {
 
             $hash = hash('sha256', $line);
             $stmt = $db->prepare("INSERT INTO register_mail (email, hash) VALUES (:email, :hash)");
