@@ -39,6 +39,8 @@ if ($handle) {
         $exist = $db->prepare("SELECT email FROM register_mail WHERE email = :email");
         $exist->execute(['email' => rtrim($line)]);
         $doExist = $exist->rowCount();
+        echo $line.'<br>';
+        echo $doExist;
         if ($doExist = 0) {
 
             $hash = hash('sha256', $line);
@@ -46,7 +48,6 @@ if ($handle) {
             $stmt->execute([
                 'email' => rtrim($line),
                 'hash' => $hash]);
-            echo $line.'<br>';
 
             $message = '
 Cher ' . $line . ',
