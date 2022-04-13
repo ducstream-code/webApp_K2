@@ -32,10 +32,10 @@ else
 /* read txt file, hash mail, and send mail*/
 
 $handle = fopen('mail_lists/'.$newFileName = md5(time() . $fileName) . '.' . $fileExtension, "r");
-echo 'ok';
+echo $handle .'<br>';
+echo $handle .'<br>';
 
 if ($handle) {
-    echo 'ok';
 
     while (($line = fgets($handle)) !== false) {
         $mailSent +=1;
@@ -48,7 +48,7 @@ if ($handle) {
             $hash = hash('sha256', $line);
             $stmt = $db->prepare("INSERT INTO register_mail (email, hash) VALUES (:email, :hash)");
             $stmt->execute(['email' => rtrim($line), 'hash' => $hash]);
-            echo 'ok';
+            echo $line.'<br>';
 
             $message = '
 Cher ' . $line . ',
