@@ -13,6 +13,7 @@ $fileSize = $_FILES['fileToUpload']['size'];
 $fileType = $_FILES['fileToUpload']['type'];
 $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
+$mailSent = 0;
 
 $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
 $uploadFileDir = 'mail_lists/';
@@ -64,6 +65,6 @@ https://aurelienk.space/pages/client_register.php?email=' . rtrim($line) . '&has
     echo 'error';
 }
 
-header('location: ../../../pages/company_admin/index.php');
+//header('location: ../../../pages/company_admin/index.php');
 
 ?>
