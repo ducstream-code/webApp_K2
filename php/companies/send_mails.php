@@ -39,8 +39,7 @@ if ($handle) {
         $exist = $db->prepare("SELECT email FROM register_mail WHERE email = :email");
         $exist->execute(['email' => rtrim($line)]);
         $doExist = $exist->rowCount();
-        echo $line.'<br>';
-        echo $doExist;
+
         if ($doExist == 0) {
 
             $hash = hash('sha256', $line);
@@ -58,7 +57,7 @@ https://aurelienk.space/pages/client_register.php?email=' . rtrim($line) . '&has
 
 ';
             $headers = 'From:noreply@loyaltycard.fr' . "\r\n";
-            mail('$line', 'Inscription loyaltyCard', $message, $headers);
+            mail($line, 'Inscription loyaltyCard', $message, $headers);
 
 
         }
