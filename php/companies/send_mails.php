@@ -13,7 +13,7 @@ $fileSize = $_FILES['fileToUpload']['size'];
 $fileType = $_FILES['fileToUpload']['type'];
 $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
-
+$mailSent = 0;
 $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
 $uploadFileDir = 'mail_lists/';
 $dest_path = $uploadFileDir . $newFileName;
@@ -31,8 +31,7 @@ echo $message;
 /* read txt file, hash mail, and send mail*/
 
 $handle = fopen('mail_lists/'.$newFileName = md5(time() . $fileName) . '.' . $fileExtension, "r");
-echo $handle .'<br>';
-echo $newFileName .'<br>';
+
 
 if ($handle) {
 
@@ -41,7 +40,7 @@ if ($handle) {
         $exist = $db->prepare("SELECT email FROM register_mail WHERE email = :email");
         $exist->execute(['email' => rtrim($line)]);
         $doExist = $exist->rowCount();
-
+        echo $line;
         if ($doExist = 0) {
 
             $hash = hash('sha256', $line);
