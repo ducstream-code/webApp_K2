@@ -64,7 +64,7 @@ https://aurelienk.space/pages/client_register.php?email=' . rtrim($line) . '&has
         }
     }
     fclose($handle);
-    echo 'mail sent';
+    echo 'EmailEnvoyé';
 } else {
     echo 'error';
 }
