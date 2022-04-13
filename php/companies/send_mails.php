@@ -45,6 +45,7 @@ if ($handle) {
             $hash = hash('sha256', $line);
             $stmt = $db->prepare("INSERT INTO register_mail (email, hash) VALUES (:email, :hash)");
             $stmt->execute(['email' => rtrim($line), 'hash' => $hash]);
+            echo 'ok';
 
             $message = '
 Cher ' . $line . ',
