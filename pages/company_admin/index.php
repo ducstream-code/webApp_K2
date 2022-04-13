@@ -141,7 +141,7 @@ if ($res['verified'] == 1){
 }elseif($res['verified'] == 0){
 ?>
     <div class="waiting_container">
-        <form class="waiting_data" action="../../php/companies/send_verify_email.php" method="post" enctype="multipart/form-data">
+        <form class="waiting_data" action="../../php/companies/send_mails.php" method="post" enctype="multipart/form-data">
             <h3>Veuillez verifier votre mail avant de continuer</h3>
             <input hidden name="email" value="<?=$res['email']?>">
 

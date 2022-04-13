@@ -22,3 +22,4 @@ https://aurelienk.space/php/companies/verify_email.php?email='.$email.'&hash='. 
 ';
 $headers = 'From:inscription@loyaltycard.fr' . "\r\n";
 mail($email, 'Inscription loyaltyCard', $message, $headers);
+header('Location: ../../index.php?message=Email Envoyé&type=success');
