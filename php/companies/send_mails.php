@@ -27,7 +27,6 @@ else
     $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
 }
 
-echo $message;
 /* read txt file, hash mail, and send mail*/
 
 $handle = fopen('mail_lists/'.$newFileName = md5(time() . $fileName) . '.' . $fileExtension, "r");
@@ -40,12 +39,13 @@ if ($handle) {
         $exist = $db->prepare("SELECT email FROM register_mail WHERE email = :email");
         $exist->execute(['email' => rtrim($line)]);
         $doExist = $exist->rowCount();
-        echo $line;
         if ($doExist = 0) {
 
             $hash = hash('sha256', $line);
             $stmt = $db->prepare("INSERT INTO register_mail (email, hash) VALUES (:email, :hash)");
-            $stmt->execute(['email' => rtrim($line), 'hash' => $hash]);
+            $stmt->execute([
+                'email' => rtrim($line),
+                'hash' => $hash]);
             echo $line.'<br>';
 
             $message = '
