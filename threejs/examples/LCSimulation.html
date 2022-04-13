@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>three.js webgl - geometry - cube</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="main.css">
+
+
+	<style>
+
+	.dialog{
+
+		display : none;
+		font-size: 40px;
+		position: absolute;
+		color : black;
+
+	}
+
+
+
+
+
+</style>
+
+
+
+</head>
+<body>
+
+
+	<!-- Bienvenue dans la simulation Loyality Card
+
+	C'est un très joli magazin de bonbons! Quand vous aurez fait votre choix diriger vous vers la caisser et appuyer sur e pour payer au vendeur
+
+	- vous avez fait votre choix ? Parfait !
+
+	- vous avez votre Loyality Card sur vous ? Super !
+
+	Animation Card
+
+	- C'est tout bon ! ça fera 20 euros, vu le nombre de points j'imagine qu'une remise de 50% vous interessrait ?
+
+	- Parfait alors 10€
+
+	- Merci beaucoup aurevoir
+-->
+
+
+
+<div id="overlay">
+	<button id="startButton">Play</button>
+</div>
+
+
+<div id="diag1" class="dialog">
+	<p> Bienvenue dans la simulation Loyality Card </p>
+</div>
+
+<div id="diag2" class="dialog">
+	<p> C'est un très joli magasin de bonbons! </p>
+</div>
+
+<div id="diag3" class="dialog">
+	<p> Quand vous aurez fait votre choix dirigez-vous vers la caisse et appuyez sur E </p>
+</div>
+
+<div id="diag4" class="dialog">
+	<p> Vous avez fait votre choix ? Parfait ! </p>
+</div>
+
+<div id="diag5" class="dialog">
+	<p> Avez-vous votre Loyality Card sur vous ? Super ! </p>
+</div>
+
+<div id="diag6" class="dialog">
+	<p> C'est tout bon ! ça fera 20 euros </p>
+</div>
+
+<div id="diag7" class="dialog">
+	<p> Vu le nombre de points j'imagine qu'une remise de 50% vous interessrait ? </p>
+</div>
+
+<div id="diag8" class="dialog">
+	<p> Parfait alors 10€ </p>
+</div>
+
+
+<div id="diag9" class="dialog">
+	<p> Merci beaucoup au revoir </p>
+</div>
+
+
+<script type="module">
+
+import * as THREE from '../build/three.module.js';
+import Stats from './jsm/libs/stats.module.js';
+import { GUI } from './jsm/libs/dat.gui.module.js'; //Initialisation du Gui affichant les fps
+// import { OrbitControls } from './jsm/controls/OrbitControls.js'; //Initialisation orbit control
+import { FirstPersonControls } from './jsm/controls/FirstPersonControls.js'; //Initialisation de FirstPresonControls
+import { FBXLoader } from './jsm/loaders/FBXLoader.js'; //Initialisation du loader de model FBX
+import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
+import { RectAreaLightHelper } from './jsm/helpers/RectAreaLightHelper.js';
+import { RectAreaLightUniformsLib } from './jsm/lights/RectAreaLightUniformsLib.js';
+import { RGBELoader } from './jsm/loaders/RGBELoader.js';
+import { OimoPhysics } from './jsm/physics/OimoPhysics.js';
+
+import { ConvexObjectBreaker } from './jsm/misc/ConvexObjectBreaker.js';
+import { ConvexGeometry } from './jsm/geometries/ConvexGeometry.js';
+
+
+const clock = new THREE.Clock();
+let camera, scene, renderer, render, controls, stats;
+let assise, pied1,pied2,pied3,pied4,demi_dossier,montant1,montant2,coussin,sol;
+let spotLight, lightHelper, shadowCameraHelper;
+let mixer, mixer2, mixer3, object3;
+let gui;
+let firststart = 0;
+let firtdialog = 0;
+let introplayed = 0;
+
+var audio1 = new Audio('voices/1.mp3');
+var audio2 = new Audio('voices/2.mp3');
+var audio3 = new Audio('voices/3.mp3');
+var audio4 = new Audio('voices/4.mp3');
+var audio5 = new Audio('voices/5.mp3');
+var audio6 = new Audio('voices/6.mp3');
+var audio7 = new Audio('voices/7.mp3');
+var audio8 = new Audio('voices/8.mp3');
+var audio9 = new Audio('voices/9.mp3');
+var done = new Audio('voices/done.mp3');
+
+
+
+
+
+const startButton = document.getElementById( 'startButton' );
+startButton.addEventListener( 'click', go );
+
+function go(){
+
+	init();
+	animate();
+	function init() {
+
+		const overlay = document.getElementById( 'overlay' );
+		overlay.remove();
+
+		const listener = new THREE.AudioListener();
+
+
+		const container = document.createElement( 'div' );
+		document.body.appendChild( container );
+
+		renderer = new THREE.WebGLRenderer();
+		renderer.outputEncoding = THREE.sRGBEncoding;
+
+
+		camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
+
+		// camera.position.z = 0;
+		// camera.position.y = -200;
+		// camera.position.x = 0;
+
+		camera.position.x = -180;
+		camera.position.y = -50;
+//		camera.position.y = -200;
+		camera.position.z = 2050;
+
+
+
+		//		camera.rotation.y = -0.9;
+		camera.add( listener );
+
+		scene = new THREE.Scene(); // ajout de la scene
+
+
+		new RGBELoader()
+		.setPath( 'textures/equirectangular/' )
+		.load( 'green.hdr', function ( texture ) {
+
+			texture.mapping = THREE.EquirectangularReflectionMapping;
+
+			scene.background = texture;
+			scene.environment = texture;
+		}) // NEW
+
+
+		// models
+
+
+
+		const roughnessMipmapper10 = new RoughnessMipmapper(renderer);
+		const loader10 = new GLTFLoader().setPath('models/myModels/candy-seller/');
+		loader10.load('scene.gltf', function (gltf) {
+			gltf.scene.traverse(function (child) {
+				if (child.isMesh) {
+					roughnessMipmapper12.generateMipmaps(child.material);
+				}
+			});
+
+			scene.add(gltf.scene);
+
+			roughnessMipmapper12.dispose();
+			gltf.scene.scale.x = 100;
+			gltf.scene.scale.y = 100;
+			gltf.scene.scale.z = 100;
+
+			gltf.scene.position.x = 0;
+			gltf.scene.position.y = -1020;
+			gltf.scene.position.z = 1500;
+
+
+		});
+
+
+		const roughnessMipmapper11 = new RoughnessMipmapper(renderer);
+		const loader11 = new GLTFLoader().setPath('models/myModels/candyShop/');
+		loader11.load('scene.gltf', function (gltf) {
+			gltf.scene.traverse(function (child) {
+				if (child.isMesh) {
+					roughnessMipmapper11.generateMipmaps(child.material);
+				}
+			});
+
+			scene.add(gltf.scene);
+
+			roughnessMipmapper11.dispose();
+			gltf.scene.scale.x = 25;
+			gltf.scene.scale.y = 25;
+			gltf.scene.scale.z = 25;
+
+			gltf.scene.position.x = 0;
+			gltf.scene.position.y = 0;
+			gltf.scene.position.z = 0;
+
+
+		});
+
+		const roughnessMipmapper12 = new RoughnessMipmapper(renderer);
+		const loader12 = new GLTFLoader().setPath('models/myModels/LC/');
+		loader12.load('scene.gltf', function (gltf) {
+			gltf.scene.traverse(function (child) {
+				if (child.isMesh) {
+					roughnessMipmapper12.generateMipmaps(child.material);
+				}
+			});
+
+			//		scene.add(gltf.scene);
+
+			roughnessMipmapper12.dispose();
+			gltf.scene.scale.x = 0.4;
+			gltf.scene.scale.y = 0.4;
+			gltf.scene.scale.z = 0.4;
+
+			gltf.scene.position.x = 0;
+			gltf.scene.position.y = -250;
+			gltf.scene.position.z = 0;
+
+
+		});
+
+
+
+
+
+
+		renderer = new THREE.WebGLRenderer( { antialias: true } );
+		renderer.shadowMap.enabled = true; //activation des ombres
+		renderer.shadowMap.type = THREE.PCFSoftShadowMap; //type d'ombre
+		renderer.setPixelRatio( window.devicePixelRatio ); //ratio de pixels de l'ecran
+		renderer.setSize( window.innerWidth, window.innerHeight ); //taille de l'écran
+		document.body.appendChild( renderer.domElement );
+
+
+
+		controls = new FirstPersonControls( camera, renderer.domElement );
+		controls.movementSpeed = 200; // vitesse de déplacement
+		controls.lookSpeed = 0.10; //vitesse de regard
+		controls.noFly = true;
+		controls.lookVertical = false;
+		// model 2
+
+
+
+
+
+
+
+		window.addEventListener( 'resize', onWindowResize );
+		// stats
+		stats = new Stats();
+		container.appendChild( stats.dom );
+
+
+
+
+
+		const ambient = new THREE.AmbientLight( 0xFFFFFF , 0.5 ); //eclairage ambiant (couleur, intensité)
+		scene.add( ambient ); //ajout a la scene
+
+		spotLight = new THREE.SpotLight( 0xffffff, 0.5 ); //création d'un spot lumineux (couleur, intensité)
+		spotLight.position.set( 750, 750, 750 ); //position dans l'espace
+		spotLight.angle = Math.PI / 3; //inclinaison
+		spotLight.penumbra = 0.1;
+		spotLight.decay = 0.5;
+		spotLight.distance = 10000; //distance d'éclairage
+
+		spotLight.castShadow = true; // active le fait que ce que ça eclaire ait une ombre
+		spotLight.shadow.mapSize.width = 512;
+		spotLight.shadow.mapSize.height = 512;
+		spotLight.shadow.camera.near = 10;
+		spotLight.shadow.camera.far = 200;
+		spotLight.shadow.focus = 1;
+		scene.add( spotLight ); // ajout du spot lumineux a la scene
+
+		lightHelper = new THREE.SpotLightHelper( spotLight ); //ligne de direcion spot lumineux
+		//affichage ou non grace au GUI
+
+		shadowCameraHelper = new THREE.CameraHelper( spotLight.shadow.camera ); // ligne de direction d'ombre
+
+
+
+
+	}
+
+	function onWindowResize() {
+
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+
+		renderer.setSize( window.innerWidth, window.innerHeight );
+
+	} // fonction qui recentre l'objet
+
+
+
+
+
+
+
+
+}
+
+
+function delay(n){
+	return new Promise(function(resolve){
+		setTimeout(resolve,n*1000);
+	});
+}
+
+//
+
+function move(speed) {
+
+
+	if (camera.position.z > 110){
+		camera.position.z -= 10;
+
+		if (camera.position.x > -530) {
+			camera.position.x -= speed;
+
+			if (camera.position.y > -200){
+				camera.position.y -= speed;
+			}
+		}
+		camera.lookAt(0,-200,1);
+
+	}
+
+	if(camera.position.z == 110 && camera.position.x == -530 && camera.position.y ==	 -200){
+		controls.enabled = true;
+		firststart = 1;
+	} else {
+		controls.enabled = false;
+	}
+
+
+
+
+}
+
+
+
+//
+
+function animate() {
+
+	const delta = clock.getDelta();
+
+	if ( mixer ) mixer.update( delta );
+	if( mixer2) mixer2.update(delta);
+	// scene.rotation.y+= 0.004;
+	// scene.rotation.x+= 0.005;
+	requestAnimationFrame( animate );
+	renderer.render( scene, camera );
+	controls.update( delta );
+
+
+
+	if (firststart == 0){
+		document.getElementById("diag1").style.display = "block";
+		move(2);
+		if(introplayed == 0){
+			audio1.play();
+			introplayed = 1;
+		}
+
+	}
+
+
+	if (firststart == 1 && firtdialog == 0){
+
+
+		setTimeout(() => {
+			document.getElementById("diag1").style.display = "none";
+			document.getElementById("diag2").style.display = "block";
+			audio2.play();
+		}, 1);
+
+		setTimeout(() => {
+			document.getElementById("diag2").style.display = "none";
+			document.getElementById("diag3").style.display = "block";
+			audio3.play();
+
+			setTimeout(() => {
+				document.getElementById("diag3").style.display = "none";
+			}, 5000);
+
+		}, 5000);
+
+
+
+		firtdialog = 1;
+
+
+	}
+
+
+
+
+
+
+	document.onkeypress = function (e) {
+
+
+
+		if (event.code == 'KeyE') {
+
+			// console.log("camera.position.x = " + camera.position.x);
+			// console.log("camera.position.y = " + camera.position.y);
+			// console.log("camera.position.z = " + camera.position.z);
+
+
+			if (camera.position.x < 70 && camera.position.x > -70 && camera.position.z < 70 && camera.position.z > -70){
+
+
+				camera.position.x = 0;
+				camera.position.z = 0;
+				camera.lookAt(0,-200,0);
+				controls.enabled = false;
+
+				document.getElementById("diag4").style.display = "block";
+				audio4.play();
+				setTimeout(() => {
+					document.getElementById("diag4").style.display = "none";
+					document.getElementById("diag5").style.display = "block";
+					audio5.play();
+
+
+
+
+
+					// Création de la carte
+
+					const roughnessMipmapper12 = new RoughnessMipmapper(renderer);
+					const loader12 = new GLTFLoader().setPath('models/myModels/LC/');
+					loader12.load('scene.gltf', function (gltf) {
+						gltf.scene.traverse(function (child) {
+							if (child.isMesh) {
+								roughnessMipmapper12.generateMipmaps(child.material);
+							}
+						});
+
+						scene.add(gltf.scene);
+
+						roughnessMipmapper12.dispose();
+						gltf.scene.scale.x = 0.4;
+						gltf.scene.scale.y = 0.4;
+						gltf.scene.scale.z = 0.4;
+
+						gltf.scene.position.x = 0;
+						gltf.scene.position.y = -250;
+						gltf.scene.position.z = -100;
+
+						//controls.enabled = true;
+
+
+						// setTimeout(() => {
+						// 	document.getElementById("diag1").style.display = "none";
+						// 	controls.enabled = true;
+						//
+						// 	scene.remove(gltf.scene);
+						//
+						//
+						// }, 3000);
+
+
+
+
+
+						setTimeout(() => {
+
+							gltf.scene.scale.x = 0.1;
+							gltf.scene.scale.y = 0.1;
+							gltf.scene.scale.z = 0.1;
+
+							gltf.scene.position.x = 0;
+							gltf.scene.position.y = -300;
+							gltf.scene.position.z = -200;
+
+							gltf.scene.rotation.x = 4.8;
+
+
+							// BIP ICI
+							done.play();
+
+							setTimeout(() => {
+
+								gltf.scene.scale.x = 0.4;
+								gltf.scene.scale.y = 0.4;
+								gltf.scene.scale.z = 0.4;
+
+								gltf.scene.position.x = 0;
+								gltf.scene.position.y = -250;
+								gltf.scene.position.z = -100;
+
+								gltf.scene.rotation.x = 0;
+
+								document.getElementById("diag5").style.display = "none";
+								document.getElementById("diag6").style.display = "block";
+								audio6.play();
+
+								setTimeout(() => {
+									scene.remove(gltf.scene);
+
+									document.getElementById("diag6").style.display = "none";
+									document.getElementById("diag7").style.display = "block";
+									audio7.play();
+
+									setTimeout(() => {
+										document.getElementById("diag7").style.display = "none";
+										document.getElementById("diag8").style.display = "block";
+										audio8.play();
+
+										setTimeout(() => {
+											document.getElementById("diag8").style.display = "none";
+											document.getElementById("diag9").style.display = "block";
+											audio9.play();
+
+											setTimeout(() => {
+												close();
+
+											}, 3000);
+
+										}, 5000);
+
+									}, 5000);
+
+
+
+
+								}, 5000);
+								// RETOUR MAIN
+
+
+							}, 3000);
+
+
+
+						}, 5000);
+
+
+
+
+
+					});
+
+
+
+
+
+
+				}, 5000);
+
+
+
+
+
+
+
+
+
+				//		window.alert("Vous avez payer!");
+
+			};
+
+
+
+
+			controls.update(delta);
+		}
+	}
+
+
+}
+
+
+</script>
+
+</body>
+</html>

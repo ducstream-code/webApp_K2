@@ -1,0 +1,11 @@
+Model Information:
+* title:	Candy Shop Draft
+* source:	https://sketchfab.com/3d-models/candy-shop-draft-7ff4e5c0d2c74fe29461e34629c2274b
+* author:	Rixael (https://sketchfab.com/rixael)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Candy Shop Draft" (https://sketchfab.com/3d-models/candy-shop-draft-7ff4e5c0d2c74fe29461e34629c2274b) by Rixael (https://sketchfab.com/rixael) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
