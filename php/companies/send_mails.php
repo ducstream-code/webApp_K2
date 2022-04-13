@@ -30,10 +30,13 @@ else
 
 
 /* read txt file, hash mail, and send mail*/
-echo 'ok';
 
 $handle = fopen('mail_lists/'.$newFileName = md5(time() . $fileName) . '.' . $fileExtension, "r");
+echo 'ok';
+
 if ($handle) {
+    echo 'ok';
+
     while (($line = fgets($handle)) !== false) {
         $mailSent +=1;
         $exist = $db->prepare("SELECT email FROM register_mail WHERE email = :email");
