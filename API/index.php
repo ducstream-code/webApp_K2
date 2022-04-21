@@ -1,4 +1,8 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once("./api.php");
 try{
     if(!empty($_GET['demand'])){
@@ -21,8 +25,57 @@ try{
                     getProductByCategory($url[1]);
                 }
                 break;
-            default :   throw new Exception ("Bad request, check url");
 
+            case "users":
+            case "utilisateurs":
+                if(empty($url[1]))
+                    getUsers();
+                else
+                    throw new Exception ("Bad request, check url");
+            break;
+
+            case "user":
+            case "utilisateur":
+                if(!empty($url[1]))
+                    getUserById($url[1]);
+                else
+                    throw new Exception ("Bad request, check url");
+                break;
+
+            case "offers":
+            case "offres":
+                if(empty($url[1]))
+                    getOffers();
+                else
+                    throw new Exception ("Bad request, check url");
+                break;
+
+            case "offer":
+            case "offre":
+                if(!empty($url[1]))
+                    getOfferByID($url[1]);
+                else
+                    throw new Exception ("Bad request, check url");
+                break;
+
+            case "clientscompanies":
+            case "entreprisesclientes":
+                if(empty($url[1]))
+                    getCompanies();
+                else
+                    throw new Exception ("Bad request, check url");
+                break;
+
+            case "clientscompany":
+            case "entreprisecliente":
+                if(!empty($url[1]))
+                    getCompanyByID($url[1]);
+                else
+                    throw new Exception ("Bad request, check url");
+                break;
+
+
+            default :   throw new Exception ("Bad request, check url");
         }
     }else{
         throw new Exception ("Probleme de récuperation de données");
