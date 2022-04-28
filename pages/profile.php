@@ -46,6 +46,7 @@ include('../includes/message.php');
 include ("../includes/header.php");
 ?>
 <div class="p-32">
+    <a href="../php/loyaltyCardPdf.php?id=<?=$res['id'] ?>">Obtenir ma carte en pdf</a>
     <div class="flex flex-row p-2 justify-between">
         <div class="w-1/2">
             <img class="" src="../assets/images/icons/Card.png" alt="">

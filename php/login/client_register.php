@@ -92,7 +92,7 @@ $stmt->execute([
 ]);
 //load Qr code
 include "phpqrcode/qrlib.php";
-$text=hash('sha256',$email);
+$text= 'LCID'.$email;
 QRcode::png($text, "../../assets/qrCodes/".$email.".png");
 
 //increment registered users for a company
