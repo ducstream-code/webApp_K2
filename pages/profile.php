@@ -75,8 +75,10 @@ include ("../includes/header.php");
 
         </div>
     </div>
-
+<div class="flex">
     <p class="amount pt-6 pl-1"><?=$res['solde']?> LC</p>
+    <img src="../assets/qrCodes/<?=$res['email'] ?>.png" alt="" class="object-fill h-64 w-64">
+</div>
 </div>
 
 </body>
