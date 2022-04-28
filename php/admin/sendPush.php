@@ -64,4 +64,6 @@ print_r($id);
 print("\n\nJSON received:\n");
 print($return);
 print("\n");
+
+header('Location: ../../admin/notifications.php');
 ?>
