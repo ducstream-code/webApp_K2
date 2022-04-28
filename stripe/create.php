@@ -14,6 +14,8 @@ function calculateOrderAmount(): int {
         die('Erreur : ' . $e->getMessage());
     }
 
+    if(!isset($_COOKIE['role'])|| $_COOKIE['role'] ==  1){
+
 
     $uid = $_COOKIE['id'];
     $total = 0;
@@ -32,7 +34,33 @@ function calculateOrderAmount(): int {
 
     }
     $total = $total*100;
+    }else{
+        $uid = $_COOKIE['id'];
+        $total = 0;
+        $stmt = $db->prepare("SELECT earnings FROM clientscompanies WHERE id = :id");
+        $stmt->bindParam(":id",$uid);
+        $stmt->execute();
+        $earnings = $stmt->fetch();
+        if ($earnings['earnings'] == 0){
+            $total = 0;
+        }
+        elseif ($earnings['earnings']>200000 && $earnings['earnings'] <= 800000){
+            $total = $earnings['earnings']*0.008;
+        }
+        elseif ($earnings['earnings']>800000 && $earnings['earnings'] <= 1500000){
+            $total = $earnings['earnings']*0.006;
+        }
+        elseif ($earnings['earnings']>1500000 && $earnings['earnings'] <= 3000000){
+            $total = $earnings['earnings']*0.004;
+        }
+        elseif ($earnings['earnings']>3000000 ){
+            $total = $earnings['earnings']*0.003;
+        }
+
+
+    }
     return $total;
+
 }
 
 header('Content-Type: application/json');
