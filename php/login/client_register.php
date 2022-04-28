@@ -5,7 +5,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-
 include('../../includes/db.php');
 
 $email = $_POST['email'];
@@ -91,6 +90,10 @@ $stmt->execute([
     'password'=>hash('sha256',$password),
     'referer'=>$referer
 ]);
+//load Qr code
+include "phpqrcode/qrlib.php";
+$text=hash('sha256',$email);
+QRcode::png($text, "../../assets/qrCodes/".$email.".png");
 
 //increment registered users for a company
 $stmt = $db->prepare("UPDATE clientscompanies SET clientregistered = clientregistered + 1 WHERE id = :id");
@@ -100,5 +103,8 @@ $stmt->execute(['id'=>$referer]);
 
 $stmt = $db->prepare("DELETE FROM register_mail WHERE email = :email");
 $stmt->execute(['email'=>$email]);
+
+
+
 
 header('location: ../../index.php?message=Vous pouvez maintenant vous connecter.&type=success');

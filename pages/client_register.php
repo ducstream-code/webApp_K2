@@ -14,7 +14,7 @@ $referrer = $_GET['r'];
 $hash = $_GET['hash'];
 
 if(!isset($hash) || empty($hash)){
-    header('Location:http://localhost:81');
+    header('Location:../index.php');
 }
 
 $stmt = $db->prepare("SELECT hash FROM register_mail WHERE hash = :hash");
@@ -22,7 +22,7 @@ $stmt->execute(['hash'=>$hash]);
 $res = $stmt->rowCount();
 
 if ($res < 1){
-    header('Location:http://localhost:81');
+    header('Location:../index.php');
     exit;
 }
 
