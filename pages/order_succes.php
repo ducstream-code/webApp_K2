@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
+      <script>
+          window.OneSignal = window.OneSignal || [];
+          OneSignal.push(function() {
+              OneSignal.init({
+                  appId: "ab43238c-b4c8-4dce-8375-df0d80725789",
+              });
+          });
+      </script>
     <meta charset="utf-8">
     <?php include "../includes/head.php"?>
     <title></title>

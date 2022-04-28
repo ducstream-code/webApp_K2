@@ -20,6 +20,14 @@ include ('../includes/check_session.php');
             crossorigin="anonymous"></script>
     <script src="../external/tailwind.js"></script>
     <script src="../js/"></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "ab43238c-b4c8-4dce-8375-df0d80725789",
+            });
+        });
+    </script>
 
 
     <title>Change password</title>

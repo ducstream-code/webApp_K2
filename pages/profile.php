@@ -12,7 +12,14 @@ $res = $stmt->fetch();
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "ab43238c-b4c8-4dce-8375-df0d80725789",
+            });
+        });
+    </script>
 
     <title>Mon profile</title>
     <script src="../external/tailwind.js"></script>

@@ -16,7 +16,14 @@ include ('../includes/check_session.php');
             crossorigin="anonymous"></script>
     <script src="../external/tailwind.js"></script>
     <link rel="stylesheet" href="../css/about.css">
-
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "ab43238c-b4c8-4dce-8375-df0d80725789",
+            });
+        });
+    </script>
 
 
     <title>A propos</title>

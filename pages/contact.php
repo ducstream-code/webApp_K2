@@ -18,6 +18,14 @@ include('../includes/db.php');
   <title>Contact</title>
   <link href="../css/contact.css" rel="stylesheet">
     <script src="../js/contact.js"></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "ab43238c-b4c8-4dce-8375-df0d80725789",
+            });
+        });
+    </script>
 </head>
 <body>
 

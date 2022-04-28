@@ -20,9 +20,16 @@ include ('../includes/check_session.php');
     <script src="../../js/offer_page.js"></script>
     <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "ab43238c-b4c8-4dce-8375-df0d80725789",
+            });
+        });
+    </script>
     <title>Nos offres</title>
 </head>
 

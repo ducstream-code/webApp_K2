@@ -12,3 +12,11 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
 <link rel="stylesheet" href="../external/fullcalendar/lib/main.css">
 <script src="../external/fullcalendar/lib/main.js"></script>
+<script>
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+        OneSignal.init({
+            appId: "ab43238c-b4c8-4dce-8375-df0d80725789",
+        });
+    });
+</script>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
+
     <meta charset="utf-8">
     <?php include "../includes/head.php"?>
     <title>Error!</title>
