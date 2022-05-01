@@ -11,7 +11,7 @@
       </script>
     <meta charset="utf-8">
     <?php include "../includes/head.php"?>
-    <title></title>
+    <title>Succes</title>
   </head>
   <body>
 

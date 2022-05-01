@@ -5,6 +5,44 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include '../includes/db.php';
 
+$uid = $_COOKIE['id'];
+$stmt = $db->prepare("SELECT id FROM admin WHERE id_member = :id ");
+$stmt->bindParam(":id",$uid);
+$stmt->execute();
+$res = $stmt->fetch();
+
+if(!$res){
+    header('Location : ../index.php');
+}
+
+//compte nb Membres
+$stmt = $db->prepare("SELECT id FROM users");
+$stmt->execute();
+$nbMember = $stmt->rowCount();
+
+//compte nb Entreprises
+$stmt = $db->prepare("SELECT id FROM clientscompanies");
+$stmt->execute();
+$nbCompany = $stmt->rowCount();
+
+//nb Ventes
+
+$stmt = $db->prepare("SELECT id FROM orders WHERE status = 1");
+$stmt->execute();
+$nbOrders = $stmt->rowCount();
+
+//Calcul chiffre d'affaire
+$stmt = $db->prepare("SELECT total FROM orders WHERE status = 1");
+$stmt->execute();
+$calcTot = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$total = 0;
+foreach ($calcTot as $key => $tot){
+
+    $total += $tot['total'];
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +51,7 @@ include '../includes/db.php';
     <?php include '../includes/head.php'?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
-    <title>Admin panel</title>
+    <title>Panel administrateur</title>
 </head>
 
 <body id="body">
@@ -23,7 +61,7 @@ include '../includes/db.php';
     <div class="main left-16">
 
         <div class="topbar z-20">
-            <h3>Admin Panel</h3>
+            <h3>Panel administrateur</h3>
             <div class="actions">
 
             </div>
@@ -32,29 +70,30 @@ include '../includes/db.php';
             <div class="cardBox">
                     <div class="card">
                         <div>
-                            <div class="numbers">1,504</div>
-                            <div class="cardName">Visites</div>
+                            <div class="numbers"><?=$total ?>$</div>
+                            <div class="cardName">Chiffre d'affaire</div>
                         </div>
                         <div class="iconBx"><ion-icon name="eye-outline"></ion-icon></div>
                     </div>
                     <div class="card">
                         <div>
-                            <div class="numbers">1,504</div>
+                            <div class="numbers"> <?=$nbOrders ?></div>
                             <div class="cardName">Ventes</div>
                         </div>
                         <div class="iconBx"><ion-icon name="cart-outline"></ion-icon></ion-icon></div>
                     </div>
                     <div class="card">
                         <div>
-                            <div class="numbers">1,504</div>
-                            <div class="cardName">Chiffre d'affaire</div>
+
+                            <div class="numbers"><?= $nbCompany ?></div>
+                        <div class="cardName">Entreprises</div>
                         </div>
                         <div class="iconBx"><ion-icon name="cash-outline"></ion-icon></ion-icon></div>
                     </div>
                     <div class="card">
                         <div>
-                            <div class="numbers">1,504</div>
-                            <div class="cardName">Inscriptions</div>
+                            <div class="numbers"><?=$nbMember ?></div>
+                            <div class="cardName">Membres</div>
                         </div>
                         <div class="iconBx"><ion-icon name="person-add-outline"></ion-icon></ion-icon></div>
                     </div>

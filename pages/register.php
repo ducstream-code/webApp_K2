@@ -54,8 +54,8 @@ include("../includes/header.php");
     <label for="earnings">Chiffre d'affaire en €</label>
     <input name="earnings" type="number" step=".01" placeholder="Chiffre d'affaire" id="earnings">
 
-    <label for="password">Password</label>
-    <input name="password" type="password" placeholder="Password" id="password">
+    <label for="password">Mot de passe</label>
+    <input name="password" type="password" placeholder="Mot de passe" id="password">
 
     <button>S'inscrire</button>
 </form>

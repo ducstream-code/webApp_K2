@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <?php include "../includes/head.php"?>
-    <title>Error!</title>
+    <title>Erreur!</title>
   </head>
   <body>
 

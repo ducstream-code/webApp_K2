@@ -5,6 +5,15 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include '../includes/db.php';
 
+$uid = $_COOKIE['id'];
+$stmt = $db->prepare("SELECT id FROM admin WHERE id_member = :id ");
+$stmt->bindParam(":id",$uid);
+$stmt->execute();
+$res = $stmt->fetch();
+
+if(!$res){
+    header('Location : ../index.php');
+}
 ?>
 
 <!DOCTYPE html>

@@ -5,6 +5,15 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include '../includes/db.php';
 
+$uid = $_COOKIE['id'];
+$stmt = $db->prepare("SELECT id FROM admin WHERE id_member = :id ");
+$stmt->bindParam(":id",$uid);
+$stmt->execute();
+$res = $stmt->fetch();
+
+if(!$res){
+    header('Location : ../index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +48,8 @@ include '../includes/db.php';
             </div>
             <table class="">
                 <thead class="h-16" style="background-color: #F1F3F9">
-                <th class="text-sm text-gray-600 font-semibold">Open</th>
-                <th class="text-sm text-gray-600 font-semibold">Name</th>
+                <th class="text-sm text-gray-600 font-semibold">Ouvrir</th>
+                <th class="text-sm text-gray-600 font-semibold">Nom</th>
                 <th class="text-sm text-gray-600 font-semibold">Date</th>
                 <th class="text-sm text-gray-600 font-semibold">Email</th>
                 <th class="text-sm text-gray-600 font-semibold">Status</th>

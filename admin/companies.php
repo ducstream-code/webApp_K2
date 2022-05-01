@@ -5,6 +5,15 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include '../includes/db.php';
 
+$uid = $_COOKIE['id'];
+$stmt = $db->prepare("SELECT id FROM admin WHERE id_member = :id ");
+$stmt->bindParam(":id",$uid);
+$stmt->execute();
+$res = $stmt->fetch();
+
+if(!$res){
+    header('Location : ../index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,14 +47,14 @@ include '../includes/db.php';
             <div class="customers_table_actions pr-24 ">
                 <div class="customers_table_left flex w-full place-content-between mb-8">
                     <input class="h-10 w-1/2 border-solid border-2 border-gray-300" type="text">
-                    <button class="bg-blue-400 rounded p-2" onclick="showSlideOver()">Add Company</button>
+                    <button class="bg-blue-400 rounded p-2" onclick="showSlideOver()">Ajouter une entreprise</button>
                 </div>
             </div>
             <table class="orders_table customers_table" cellspacing="0" cellpadding="0">
                 <thead>
                 <th>id</th>
-                <th>Name</th>
-                <th>Earnings</th>
+                <th>Nom</th>
+                <th>Gains</th>
                 <th>email</th>
                 <th>status</th>
                 <th>Action</th>
@@ -138,7 +147,7 @@ include '../includes/db.php';
                 -->
                 <div class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4">
                     <button  type="button" class="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
-                        <span class="sr-only">Close panel</span>
+                        <span class="sr-only">Fermer</span>
                         <!-- Heroicon name: outline/x -->
                         <svg onclick="hideSlideOver()" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -148,7 +157,7 @@ include '../includes/db.php';
 
                 <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div class="px-4 sm:px-6 flex space-x-4 fixed z-50 bg-white w-full">
-                        <h2 class="text-lg font-medium text-gray-900  " id="slide-over-title">Add Company</h2>
+                        <h2 class="text-lg font-medium text-gray-900  " id="slide-over-title">Ajouter entreprise/h2>
                     </div>
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
                         <!-- Replace with your content -->
@@ -157,7 +166,7 @@ include '../includes/db.php';
                             <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 "  id="companyEarnings" placeholder="Earnings">
                             <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="companyEmail" placeholder="email">
                             <input type="password" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="companyPassword" placeholder="Password">
-                            <button class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="addCompany()">Create</button>
+                            <button class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="addCompany()">Créer</button>
                             <div id="addCompanyResponse" class="text-2xl text-red-500 text-center"></div>
                         </div>
                     </div>

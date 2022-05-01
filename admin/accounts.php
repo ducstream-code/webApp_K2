@@ -5,6 +5,15 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include '../includes/db.php';
 
+$uid = $_COOKIE['id'];
+$stmt = $db->prepare("SELECT id FROM admin WHERE id_member = :id ");
+$stmt->bindParam(":id",$uid);
+$stmt->execute();
+$res = $stmt->fetch();
+
+if(!$res){
+    header('Location : ../index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,16 +47,16 @@ include '../includes/db.php';
             <div class="customers_table_actions pr-24 ">
                 <div class="customers_table_left flex w-full place-content-between mb-8">
                     <input class="h-10 w-1/2 border-solid border-2 border-gray-300" type="text">
-                    <button class="bg-blue-400 rounded p-2" onclick="showSlideOver()">Add an account</button>
+                    <button class="bg-blue-400 rounded p-2" onclick="showSlideOver()">Ajouter un compte</button>
                 </div>
             </div>
             <table class="orders_table customers_table" cellspacing="0" cellpadding="0">
                 <thead>
                 <th>id</th>
-                <th>Name</th>
-                <th>firstname</th>
-                <th>nbOrders</th>
-                <th>registration date</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>nbCommandes</th>
+                <th>Date d'inscription</th>
                 <th>nbPoints</th>
                 <th>Action</th>
                 </thead>
@@ -125,7 +134,7 @@ include '../includes/db.php';
 
                 <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div class="px-4 sm:px-6 flex space-x-4 fixed z-50 bg-white w-full">
-                        <h2 class="text-lg font-medium text-gray-900  " id="slide-over-title">Add Company</h2>
+                        <h2 class="text-lg font-medium text-gray-900  " id="slide-over-title">Ajouter un compte</h2>
                     </div>
                     <div class="relative mt-6 flex-1 px-4 sm:px-6">
                         <!-- Replace with your content -->
@@ -134,7 +143,7 @@ include '../includes/db.php';
                             <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 "  id="clientFirstname" placeholder="nom de famille">
                             <input type="text" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientEmail" placeholder="email">
                             <input type="password" class="rounded p-2  w-64 border-solid border-2 border-gray-500 placeholder-black mb-4 " id="clientPassword" placeholder="Password">
-                            <button class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="addAccount()">Create</button>
+                            <button class="p-1 rounded bg-blue-400 mr-4 w-full" onclick="addAccount()">Créer</button>
                             <div id="addCompanyResponse" class="text-2xl text-red-500 text-center"></div>
                         </div>
                     </div>

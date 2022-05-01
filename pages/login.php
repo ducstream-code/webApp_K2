@@ -47,8 +47,8 @@ include("../includes/header.php");
     <label for="username">Email</label>
     <input name="email" type="email" placeholder="Email" id="username">
 
-    <label for="password">Password</label>
-    <input name="password" type="password" placeholder="Password" id="password">
+    <label for="password">Mot de passe</label>
+    <input name="password" type="password" placeholder="Mot de passe" id="password">
 
     <button>Se connecter</button>
 </form>
@@ -58,8 +58,8 @@ include("../includes/header.php");
     <label for="username">Email</label>
     <input name="email" type="email" placeholder="Email" id="username">
 
-    <label for="password">Password</label>
-    <input name="password" type="password" placeholder="Password" id="password">
+    <label for="password">Mot de passe</label>
+    <input name="password" type="password" placeholder="Mot de passe" id="password">
 
     <button>Se connecter</button>
     <a href="mailToChange.php">Mot de passe oublié ?</a>

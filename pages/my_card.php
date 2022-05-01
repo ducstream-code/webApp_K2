@@ -15,6 +15,8 @@ include ('../includes/check_session.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
             crossorigin="anonymous"></script>
+    <script src="../external/tailwind.js"></script>
+    <link rel="stylesheet" href="../css/tailwind.css">
     <script>
         window.OneSignal = window.OneSignal || [];
         OneSignal.push(function() {
@@ -38,6 +40,10 @@ include('../includes/message.php');
     <div class="diagonal_box_content">
         <h1>Avec Loyalty Card, un compte, une carte, des centaines de boutiques partenaires.</h1>
     </div>
+</div>
+
+<div class="flex justify-center">
+    <a href="../webgl/examples/simuation.html" class="p-2 rounded bg-[#100A56] text-white text-xl font-semibold hover:bg-[#D4F3F7] hover:text-black mb-8">Découvrez la simulation Loyalty Card</a>
 </div>
 
 <div class="first_section_container">

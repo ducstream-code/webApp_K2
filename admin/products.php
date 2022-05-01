@@ -6,6 +6,15 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include '../includes/db.php';
 
+$uid = $_COOKIE['id'];
+$stmt = $db->prepare("SELECT id FROM admin WHERE id_member = :id ");
+$stmt->bindParam(":id",$uid);
+$stmt->execute();
+$res = $stmt->fetch();
+
+if(!$res){
+    header('Location : ../index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +24,7 @@ include '../includes/db.php';
     <script src="../js/admin/orders.js"></script>
 
 
-    <title>Commandes</title>
+    <title>Produits</title>
 </head>
 
 <body>
@@ -27,7 +36,7 @@ include '../includes/db.php';
 
     <div class="main left-16">
         <div class="topbar">
-            <h3>Commandes</h3>
+            <h3>Produits</h3>
             <div class="actions">
 
             </div>
@@ -39,7 +48,7 @@ include '../includes/db.php';
             <div class="customers_table_actions pr-24 ">
                 <div class="customers_table_left flex w-full place-content-between mb-8">
                     <input class="h-10 w-1/2 border-solid border-2 border-gray-300" type="text">
-                    <button class="bg-blue-400 rounded p-2" onclick="showSlideOver()">Create an order</button>
+                    <button class="bg-blue-400 rounded p-2" onclick="showSlideOver()">Create un produit</button>
                 </div>
             </div>
             <table class="orders_table customers_table" cellspacing="0" cellpadding="0">

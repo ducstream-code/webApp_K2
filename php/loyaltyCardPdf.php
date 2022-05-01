@@ -23,7 +23,8 @@ class PDF extends FPDF {
         $stmt->execute();
         $res = $stmt->fetch();
         // Add logo to page
-        $this->Image("../assets/qrCodes/".$res['email'].".png",10,8,60);
+        //$this->Image("../assets/images/logos/logo.png",10,8,60);
+
 
         // Set font family to Arial bold
         $this->SetFont('Arial','B',20);
@@ -65,7 +66,7 @@ $pdf->SetFont('Times','',14);
     $pdf->Cell(0, 10, '', 0, 1);
     $pdf->Cell(0, 10, '', 0, 1);
     $pdf->Cell(0, 10, '', 0, 1);
-    $pdf->Cell(0, 10, '', 0, 1);
+    $pdf->Image("../assets/qrCodes/".$res['email'].".png",10,8,60);
     $pdf->Cell(0, 10, $res['firstname']." ".$res['name'], 0, 1);
     $pdf->Cell(0, 10, $res['email'], 0, 1);
     $pdf->Cell(0, 10, 'Carte de fidelite LoyaltyCard', 0, 1);
