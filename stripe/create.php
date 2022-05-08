@@ -1,8 +1,5 @@
 <?php
-// DISPLAY ERRORS
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 include "../includes/db.php";
 require '../vendor/autoload.php';
 
@@ -16,7 +13,6 @@ function calculateOrderAmount(): int {
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
 
 
     $uid = $_COOKIE['id'];
@@ -36,14 +32,7 @@ function calculateOrderAmount(): int {
 
     }
     $total = $total*100;
-
-
-
-    if ($total < 1){
-        $total=1;
-    }
     return $total;
-
 }
 
 header('Content-Type: application/json');
