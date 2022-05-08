@@ -47,16 +47,16 @@ function calculateOrderAmount(): int {
             return 1;
         }
         elseif ($earnings['earnings']>200000 && $earnings['earnings'] <= 800000){
-            $total = ($earnings['earnings']*0.008)*100;
+            return ($earnings['earnings']*0.008)*100;
         }
         elseif ($earnings['earnings']>800000 && $earnings['earnings'] <= 1500000){
-            $total = $earnings['earnings']*0.006*100;
+            return $earnings['earnings']*0.006*100;
         }
         elseif ($earnings['earnings']>1500000 && $earnings['earnings'] <= 3000000){
-            $total = $earnings['earnings']*0.004*100;
+            return $earnings['earnings']*0.004*100;
         }
         elseif ($earnings['earnings']>3000000 ){
-            $total = $earnings['earnings']*0.003*100;
+            return $earnings['earnings']*0.003*100;
         }
 
 
