@@ -9,7 +9,7 @@ header('Content-Type: application/json; charset=utf-8');
 include "../../includes/db.php";
 
 $key = $_GET['key'];
-$uid = $_GET['uid'];
+$email = $_GET['email'];
 
 $stmt = $db->prepare("SELECT rights FROM api_key WHERE APIKey = :apikey");
 $stmt->bindParam(':apikey',$key);
@@ -21,8 +21,8 @@ if ($hasRight['rights'] < 2) {
     exit();
 }
 
-$stmt = $db->prepare("SELECT id, username, name, firstname, email, solde FROM users WHERE id = :uid");
-$stmt->bindParam(':uid',$uid);
+$stmt = $db->prepare("SELECT id, username, name, firstname, email, solde FROM users WHERE email = :email");
+$stmt->bindParam(':email',$email);
 $stmt->execute();
 $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
