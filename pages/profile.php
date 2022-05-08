@@ -1,7 +1,7 @@
 <?php
 include ('../includes/db.php');
 include ('../includes/check_session.php');
-include "../includes/db.php";
+include '../php/login/phpqrcode/qrlib.php';
 $id = $_COOKIE['id'];
 
 if (!isset($id)){
