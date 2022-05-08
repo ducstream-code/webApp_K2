@@ -32,6 +32,10 @@ function calculateOrderAmount(): int {
 
     }
     $total = $total*100;
+
+    if($total < 1 ){
+        $total= 1;
+    }
     return $total;
 }
 
