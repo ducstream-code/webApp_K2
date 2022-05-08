@@ -67,7 +67,7 @@ if($response->isSuccessful()) {
         $stmt->execute();
     }
 
-    header('Location: ../pages/order_success.php');
+    header('Location: ../pages/company_admin/index.php');
 
 
 

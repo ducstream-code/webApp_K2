@@ -1,3 +1,7 @@
+<?php
+include ('../includes/db.php');
+include ('../includes/check_session.php');
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -7,10 +11,13 @@
     <title>Erreur!</title>
   </head>
   <body>
+  <?php
+  include('../includes/message.php');
+  include ("../includes/header.php");
+  ?>
 
 
-
-<div class="center pt-5  mt-24">
+<div class="center pt-32">
 
 <p class="primary text-6xl text-center font-bold">Mince, une erreur est survenue</p>
 
