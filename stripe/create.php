@@ -39,7 +39,9 @@ function calculateOrderAmount(): int {
 
 
 
-
+    if ($total < 1){
+        $total=1;
+    }
     return $total;
 
 }
