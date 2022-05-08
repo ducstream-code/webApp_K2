@@ -44,8 +44,9 @@ if($response->isSuccessful()) {
 
 
 
-    header('Location: ../pages/order_success.php');
+    header('Location: ../pages/order_error.php');
 } else {
     $_SESSION['payment_error'] = $response->getMessage();
-    header('Location: ../pages/order_error.php');
+    header('Location: ../pages/order_success.php');
+
 }
