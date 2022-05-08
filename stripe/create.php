@@ -70,7 +70,7 @@ function calculateAmountCompany():int {
         $total = $earnings['earnings']*0.003;
     }
 
-    return $total;
+    return $total*100;
 }
 
 header('Content-Type: application/json');
