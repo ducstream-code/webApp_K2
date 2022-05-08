@@ -31,10 +31,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { //verify email
 
 
 
-$stmt = $db->prepare("INSERT INTO contact (name, email,message) VALUES (:name, :email, :message)");
-$stmt->bindParam(':name',$name);
-$stmt->bindParam(':email',$email);
-$stmt->bindParam(':message',$message);
+$stmt = $db->prepare("INSERT INTO contact (name, email,message) VALUES ('$name','$email','$message')");
 $stmt->execute();
 
 echo 'MESSAGE ENVOYÉ';
