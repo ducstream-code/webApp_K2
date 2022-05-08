@@ -48,7 +48,7 @@ if ($res['verified'] == 1) {
             <h3>Désormais, afin que vos clients puissent profiter de nos offres et avantages, il est necessaire que vous
                 payiez votre cotisation</h3>
             <h4>
-                <button class="rounded " onclick="window.location='../../stripe/create.php">Passer au paiement</button>
+                <a href="../../stripe/checkout.php">Passer au paiement<a>
             </h4>
 
 

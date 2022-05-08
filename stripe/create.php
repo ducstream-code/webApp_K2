@@ -8,11 +8,7 @@ require '../vendor/autoload.php';
 
 function calculateOrderAmount(): int {
 //connexion a la base de donnée
-    try {
-        $db = new PDO('mysql:host=localhost:3307;dbname=loyaltycard', 'root', 'root', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+    include "../includes/db.php";
 
     if(!isset($_COOKIE['role'])|| $_COOKIE['role'] ==  1){
 
