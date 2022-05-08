@@ -11,7 +11,7 @@ $stmt->bindParam(':id',$id);
 $stmt->execute();
 $res = $stmt->fetch();
 include 'login/phpqrcode/qrlib.php';
-
+QRcode::png('code data text', '../assets/qrCodes/filename.png');
 class PDF extends FPDF {
 
     // Page header
@@ -23,6 +23,8 @@ class PDF extends FPDF {
         $stmt->bindParam(':id',$id);
         $stmt->execute();
         $res = $stmt->fetch();
+        QRcode::png($res['email'], '../assets/qrCodes/'.$res['email'].'.png');
+
         // Add logo to page
         //$this->Image("../assets/images/logos/logo.png",10,8,60);
 
@@ -67,7 +69,7 @@ $pdf->SetFont('Times','',14);
     $pdf->Cell(0, 10, '', 0, 1);
     $pdf->Cell(0, 10, '', 0, 1);
     $pdf->Cell(0, 10, '', 0, 1);
-    $pdf->Image(QRcode::png('some othertext 1234'),10,8,60);
+    $pdf->Image("../assets/qrCodes/".$res['email'].".png",10,8,60);
     $pdf->Cell(0, 10, $res['firstname']." ".$res['name'], 0, 1);
     $pdf->Cell(0, 10, $res['email'], 0, 1);
     $pdf->Cell(0, 10, 'Carte de fidelite LoyaltyCard', 0, 1);
