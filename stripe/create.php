@@ -17,7 +17,6 @@ function calculateOrderAmount(): int {
         die('Erreur : ' . $e->getMessage());
     }
 
-
     $uid = $_COOKIE['id'];
     $total = 0;
     $stmt = $db->prepare("SELECT id_product,quantity FROM cart WHERE id_user = :uid");
@@ -42,6 +41,38 @@ function calculateOrderAmount(): int {
     return $total;
 }
 
+function calculateAmountCompany():int {
+    try {
+        $db = new PDO('mysql:host=152.228.218.3:3306;dbname=loyaltycard', 'rooter', 'U8bg^86j', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    $uid = $_COOKIE['id'];
+    $total = 0;
+    $stmt = $db->prepare("SELECT earnings FROM clientscompanies WHERE id = :id");
+    $stmt->bindParam(":id",$uid);
+    $stmt->execute();
+    $earnings = $stmt->fetch();
+    if ($earnings['earnings'] == 0){
+        $total = 1;
+    }
+    elseif ($earnings['earnings']>200000 && $earnings['earnings'] <= 800000){
+        $total = $earnings['earnings']*0.008;
+    }
+    elseif ($earnings['earnings']>800000 && $earnings['earnings'] <= 1500000){
+        $total = $earnings['earnings']*0.006;
+    }
+    elseif ($earnings['earnings']>1500000 && $earnings['earnings'] <= 3000000){
+        $total = $earnings['earnings']*0.004;
+    }
+    elseif ($earnings['earnings']>3000000 ){
+        $total = $earnings['earnings']*0.003;
+    }
+
+    return $total;
+}
+
 header('Content-Type: application/json');
 
 try {
@@ -50,13 +81,28 @@ try {
     $jsonObj = json_decode($jsonStr);
 
     // Create a PaymentIntent with amount and currency
-    $paymentIntent = \Stripe\PaymentIntent::create([
-        'amount' => calculateOrderAmount(),
-        'currency' => 'eur',
-        'automatic_payment_methods' => [
-            'enabled' => true,
-        ],
-    ]);
+
+    if ($_COOKIE['role'] == 0){
+        $paymentIntent = \Stripe\PaymentIntent::create([
+            'amount' => calculateOrderAmount(),
+            'currency' => 'eur',
+            'automatic_payment_methods' => [
+                'enabled' => true,
+            ],
+        ]);
+    }
+
+    if ($_COOKIE['role'] == 1){
+        $paymentIntent = \Stripe\PaymentIntent::create([
+            'amount' => calculateAmountCompany(),
+            'currency' => 'eur',
+            'automatic_payment_methods' => [
+                'enabled' => true,
+            ],
+        ]);
+    }
+
+
 
     $output = [
         'clientSecret' => $paymentIntent->client_secret,
