@@ -1,12 +1,19 @@
 <?php
 include ('../includes/db.php');
 include ('../includes/check_session.php');
+include "../includes/db.php";
 $id = $_COOKIE['id'];
+
+if (!isset($id)){
+    header('Location : ../index.php');
+}
 
 $stmt =$db->prepare("SELECT * FROM users WHERE id = :id");
 $stmt->bindParam(':id',$id);
 $stmt->execute();
 $res = $stmt->fetch();
+QRcode::png($res['email'], '../assets/qrCodes/'.$res['email'].'.png');
+
 ?>
 
 <html lang="fr">

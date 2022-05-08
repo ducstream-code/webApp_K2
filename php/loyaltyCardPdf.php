@@ -11,7 +11,7 @@ $stmt->bindParam(':id',$id);
 $stmt->execute();
 $res = $stmt->fetch();
 include 'login/phpqrcode/qrlib.php';
-QRcode::png('code data text', '../assets/qrCodes/filename.png');
+
 class PDF extends FPDF {
 
     // Page header
