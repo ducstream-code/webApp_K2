@@ -47,6 +47,18 @@ if($response->isSuccessful()) {
     header('Location: ../pages/order_error.php');
 } else {
     $_SESSION['payment_error'] = $response->getMessage();
+    if($_COOKIE['role'] == 0){
+
+    }
+
+    if($_COOKIE['role'] !=0){
+        $stmt = $db->prepare("UPDATE clientscompanies SET verified=3 WHERE id = :id");
+        $stmt->bindParam(':id',$_COOKIE['id']);
+        $stmt->execute();
+    }
+
     header('Location: ../pages/order_success.php');
+
+
 
 }

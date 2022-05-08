@@ -11,8 +11,8 @@ $stmt->bindParam(":id",$uid);
 $stmt->execute();
 $res = $stmt->fetch();
 
-if(!$res){
-    header('Location : ../index.php');
+if (!$res){
+    header("Location: ../index.php");
 }
 ?>
 
