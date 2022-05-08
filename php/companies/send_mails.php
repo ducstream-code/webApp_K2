@@ -43,11 +43,15 @@ if ($handle) {
         if ($doExist == 0) {
 
             $hash = hash('sha256', $line);
-            $stmt = $db->prepare("INSERT INTO register_mail (email, hash) VALUES (:email, :hash)");
+            $stmt = $db->prepare("INSERT INTO register_mail (email, hash,id_referrer) VALUES (:email, :hash,:r)");
             $stmt->execute([
                 'email' => rtrim($line),
-                'hash' => $hash]);
+                'hash' => $hash,
+                'r' => $r
+                ]);
 
+            $stmt = $db->prepare("UPDATE clientscompanies SET mailsent = (mailsent + 1 ) WHERE id = :r");
+            $stmt->bindParam(':r',$r);
             $message = '
 Cher ' . $line . ',
 Votre entreprise vous à inscris sur loyaltyCard!

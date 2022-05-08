@@ -76,7 +76,7 @@
 </style>
 <header>
     <div class="header_logo">
-        <img onclick="window.location='../index.php'" src="../../assets/images/logos/logo-500px.png"class="logo"></img>
+        <img onclick="window.location='../../index.php'" src="../../assets/images/logos/logo-500px.png"class="logo">
     </div>
     <div class="header_buttons">
 

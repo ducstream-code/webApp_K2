@@ -67,91 +67,132 @@ if ($res['verified'] == 1) {
     include '../../includes/header_company.php' ?>
     <body>
 
-    <div class="container">
-        <div class="stats">
-            <div class="card">
-                <div>
-                    <div class="numbers">1,504</div>
-                    <div class="cardName">Mails envoyés</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    </ion-icon></div>
+<div class="container">
+    <div class="stats">
+    <div class="card">
+        <div>
+            <?php
+            $stmt = $db->prepare("SELECT mailsent FROM clientscompanies WHERE id = :id");
+            $stmt->bindParam(':id', $_COOKIE['id']);
+            $stmt->execute();
+            $nbMail = $stmt->fetch();
+            ?>
+            <div class="numbers"><?=$nbMail['mailsent']?></div>
+            <div class="cardName">Mails envoyés</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="mail-outline"></ion-icon>
+            </ion-icon></div>
+    </div>
+
+    <div class="card">
+        <div>
+            <?php
+            $stmt = $db->prepare("SELECT id FROM users WHERE idReferer = :id");
+            $stmt->bindParam(':id', $_COOKIE['id']);
+            $stmt->execute();
+            $nbRegister = $stmt->rowCount();
+            ?>
+
+            <div class="numbers"><?= $nbRegister ?></div>
+            <div class="cardName">Membres inscrits</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="mail-open-outline"></ion-icon>
+            </ion-icon></div>
+    </div>
+    <div class="card">
+        <div>
+            <?php
+            $orders = 0;
+            $stmt = $db->prepare("SELECT id FROM users WHERE idReferer = :id");
+            $stmt->bindParam(':id', $_COOKIE['id']);
+            $stmt->execute();
+            $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($members as $key => $member) {
+                $stmt = $db->prepare("SELECT id FROM orders WHERE id_customer = :cid");
+                $stmt->bindParam(':cid', $member['id']);
+                $stmt->execute();
+                $nbOrder = $stmt->rowCount();
+                $orders += $nbOrder;
+            }
+
+            ?>
+            <div class="numbers"><?= $orders ?></div>
+            <div class="cardName">Achats de membres</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="cart-outline"></ion-icon>
+            </ion-icon></div>
+    </div>
+    <div class="card">
+    <?php
+    $stmt = $db->prepare("SELECT id FROM users WHERE idReferer = :id");
+    $stmt->bindParam(':id', $_COOKIE['id']);
+    $stmt->execute();
+    $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $points = 0;
+    foreach ($members as $key => $member) {
+        $stmt = $db->prepare("SELECT solde FROM users WHERE id = :id");
+        $stmt->bindParam(':id',$member['id']);
+        $stmt->execute();
+        $avPoints = $stmt->fetch();
+        $points += $avPoints['solde'] ;
+    }
+    $endPoints = $points/$nbRegister
+
+
+        ?>
+
+        <div>
+            <div class="numbers"><?= sprintf("%.2f", $endPoints)?></div>
+            <div class="cardName">Points moyen</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="star-outline"></ion-icon>
+            </ion-icon></div>
+        </div>
+        <!--
+        <div class="card">
+            <div>
+                <div class="numbers">1,504</div>
+                <div class="cardName">Visites</div>
             </div>
-            <div class="card">
-                <div>
-                    <div class="numbers">1,504</div>
-                    <div class="cardName">Mails reçus</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="mail-open-outline"></ion-icon>
-                    </ion-icon></div>
+            <div class="iconBx">
+                <ion-icon name="eye-outline"></ion-icon>
             </div>
-            <div class="card">
-                <div>
-                    <div class="numbers">1,504</div>
-                    <div class="cardName">Membres inscrits</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="mail-open-outline"></ion-icon>
-                    </ion-icon></div>
-            </div>
-            <div class="card">
-                <div>
-                    <div class="numbers">1,504</div>
-                    <div class="cardName">Achats de membres</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="cart-outline"></ion-icon>
-                    </ion-icon></div>
-            </div>
-            <div class="card">
-                <div>
-                    <div class="numbers">1,504</div>
-                    <div class="cardName">Points moyen</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="star-outline"></ion-icon>
-                    </ion-icon></div>
-            </div>
-            <div class="card">
-                <div>
-                    <div class="numbers">1,504</div>
-                    <div class="cardName">Visites</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="eye-outline"></ion-icon>
-                </div>
-            </div>
+        </div> -->
 
         </div>
 
 
-    </div>
+        </div>
 
 
-    <form action="../../php/companies/send_mails.php" method="post" enctype="multipart/form-data" id="send_mail">
-        <h3>Ajouter des clients</h3>
+        <form action="../../php/companies/send_mails.php" method="post" enctype="multipart/form-data" id="send_mail">
+            <h3>Ajouter des clients</h3>
 
-        <label class="file">
-            <input type="hidden" name="referrer" value="<?= $res['id'] ?>">
-            <input type="file" name="fileToUpload" id="fileToUpload">
+            <label class="file">
+                <input type="hidden" name="referrer" value="<?= $res['id'] ?>">
+                <input type="file" name="fileToUpload" id="fileToUpload">
 
-        </label>
+            </label>
 
-        <button>Ajouter de clients</button>
-        <button type="button" onclick="document.getElementById('send_mail').style.display='none'">Fermer</button>
-    </form>
+            <button>Ajouter de clients</button>
+            <button type="button" onclick="document.getElementById('send_mail').style.display='none'">Fermer</button>
+        </form>
 
 
-    <script>
+        <script>
 
-    </script>
+        </script>
     <?php include('../../includes/message.php'); ?>
-    </body>
-    </html>
-    <?php
-} elseif ($res['verified'] == 0) {
+        </body>
+        </html>
+        <?php
+    }
+elseif
+    ($res['verified'] == 0){
     ?>
     <div class="waiting_container">
         <form class="waiting_data" action="../../php/companies/send_mails.php" method="post"

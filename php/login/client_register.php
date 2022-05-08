@@ -91,9 +91,7 @@ $stmt->execute([
     'referer'=>$referer
 ]);
 //load Qr code
-include "phpqrcode/qrlib.php";
-$text= $email;
-QRcode::png($text, "../../assets/qrCodes/".$email.".png");
+
 
 //increment registered users for a company
 $stmt = $db->prepare("UPDATE clientscompanies SET clientregistered = clientregistered + 1 WHERE id = :id");
