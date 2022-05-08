@@ -9,7 +9,8 @@ require '../vendor/autoload.php';
 // This is your test secret API key.
 \Stripe\Stripe::setApiKey('sk_test_51Iw30hAx4XWMLumfhvVm8NnOQYk8yxjFMNC9ZXcDKni4ti1qUX92wC0fhivOqVUtUVyo3X4VS0Zbm7InJbCq2Gge00XuYRcamp');
 
-function calculateOrderAmount(): int {
+function calculateOrderAmount(): int
+{
 //connexion a la base de donnée
     try {
         $db = new PDO('mysql:host=152.228.218.3:3306;dbname=loyaltycard', 'rooter', 'U8bg^86j', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
@@ -17,7 +18,7 @@ function calculateOrderAmount(): int {
         die('Erreur : ' . $e->getMessage());
     }
 
-    if (!isset($_COOKIE['role']) && $_COOKIE['role'] !=1) {
+    if (!isset($_COOKIE['role']) && $_COOKIE['role'] != 1) {
         $uid = $_COOKIE['id'];
         $total = 0;
         $stmt = $db->prepare("SELECT id_product,quantity FROM cart WHERE id_user = :uid");
@@ -38,11 +39,11 @@ function calculateOrderAmount(): int {
         if ($total < 1) {
             $total = 1;
         }
-        return $total;
+
     }
 
-
-
+    return $total;
+}
 
 
 
