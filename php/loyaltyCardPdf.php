@@ -10,6 +10,7 @@ $stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
 $stmt->bindParam(':id',$id);
 $stmt->execute();
 $res = $stmt->fetch();
+include 'login/phpqrcode/qrlib.php';
 
 class PDF extends FPDF {
 
@@ -66,7 +67,7 @@ $pdf->SetFont('Times','',14);
     $pdf->Cell(0, 10, '', 0, 1);
     $pdf->Cell(0, 10, '', 0, 1);
     $pdf->Cell(0, 10, '', 0, 1);
-    $pdf->Image("../assets/qrCodes/".$res['email'].".png",10,8,60);
+    $pdf->Image(QRcode::png('some othertext 1234'),10,8,60);
     $pdf->Cell(0, 10, $res['firstname']." ".$res['name'], 0, 1);
     $pdf->Cell(0, 10, $res['email'], 0, 1);
     $pdf->Cell(0, 10, 'Carte de fidelite LoyaltyCard', 0, 1);
