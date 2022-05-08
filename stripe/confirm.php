@@ -3,12 +3,14 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+include "../includes/db.php";
 
 
 require_once "../vendor/autoload.php";
 
 use Stripe\Stripe;
 use Omnipay\Omnipay;
+include "../includes/db.php";
 
 define('STRIPE_PUBLISHABLE_KEY', 'pk_test_51Iw30hAx4XWMLumfPg5tAGJkPMFrOAAcf3hzePpIlNHSb2LvlDsTf4ErVNEzM7WlXdoiakwJThlhkeelcwgtbdIa00Seq40hGs');
 define('STRIPE_SECRET_KEY', 'sk_test_51Iw30hAx4XWMLumfhvVm8NnOQYk8yxjFMNC9ZXcDKni4ti1qUX92wC0fhivOqVUtUVyo3X4VS0Zbm7InJbCq2Gge00XuYRcamp');
@@ -46,13 +48,21 @@ if($response->isSuccessful()) {
 
     header('Location: ../pages/order_error.php');
 } else {
+    include "../includes/db.php";
+
     $_SESSION['payment_error'] = $response->getMessage();
     if($_COOKIE['role'] == 0){
 
     }
+    try {
+        $db = new PDO('mysql:host=152.228.218.3:3306;dbname=loyaltycard', 'rooter', 'U8bg^86j', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
 
     if($_COOKIE['role'] !=0){
-        $stmt = $db->prepare("UPDATE clientscompanies SET verified=3 WHERE id = :id");
+        $stmt = $db->prepare("UPDATE clientscompanies SET verified = 3 WHERE id = :id");
         $stmt->bindParam(':id',$_COOKIE['id']);
         $stmt->execute();
     }
