@@ -51,8 +51,8 @@ if ($type == 2){
     $stmt = $db->prepare("SELECT solde FROM users WHERE id = :user");
     $stmt->bindParam(':user',$uids);
     $stmt->execute();
-    $checkSold = $stmt->fetch();
-
+    $checkSold = $stmt->fetchAll();
+    echo $checkSold;
     if ($checkSold['solde'] - $value < 0 ){
         echo json_encode('False');
         exit();
