@@ -28,8 +28,8 @@ if ($type == 1){
         exit();
     }
     $stmt = $db->prepare("UPDATE users SET solde = (solde + :value) WHERE email = 'aurelienkrief@gmail.com'");
-    //$stmt->bindParam(':value',$value);
-    $stmt->bindParam(':user',$uids);
+    $stmt->bindParam(':value',$value);
+    //$stmt->bindParam(':user',$uids);
     $stmt->execute();
 
     echo json_encode('points added');
