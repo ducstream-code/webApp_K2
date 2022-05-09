@@ -7,7 +7,7 @@ include "../../includes/db.php";
 header('Content-Type: application/json; charset=utf-8');
 
 $key = $_GET['key'];
-$uid = $_GET['uid'];
+$uid = $_GET['email'];
 $type = $_GET['type'];
 $value = $_GET['value'];
 
@@ -47,12 +47,24 @@ if ($type == 2){
         echo 'Forbidden';
         exit();
     }
+
+    $stmt = $db->prepare("SELECT solde FROM users WHERE id = :user");
+    $stmt->bindParam(':user',$uids);
+    $stmt->execute();
+    $checkSold = $stmt->fetch();
+
+    if ($checkSold['solde'] - $value < 0 ){
+        echo json_encode('False');
+        exit();
+    }
+
+
     $stmt = $db->prepare("UPDATE users SET solde = (solde - :value) WHERE id = :user");
     $stmt->bindParam(':value',$value);
     $stmt->bindParam(':user',$uids);
     $stmt->execute();
 
-    echo json_encode('Done removed points');
+    echo json_encode('True');
 }
 
 else{
