@@ -27,8 +27,8 @@ if ($type == 1){
         echo 'Forbidden';
         exit();
     }
-    $stmt = $db->prepare("UPDATE users SET solde = (solde + :value) WHERE email = :user");
-    $stmt->bindParam(':value',$value);
+    $stmt = $db->prepare("UPDATE users SET solde = (solde + :value) WHERE email = 'aurelienkrief@gmail.com'");
+    //$stmt->bindParam(':value',$value);
     $stmt->bindParam(':user',$uids);
     $stmt->execute();
 
