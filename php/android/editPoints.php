@@ -32,7 +32,7 @@ if ($type == 1){
     $stmt->bindParam(':user',$uid);
     $stmt->execute();
 
-    echo json_encode('points added');
+    echo json_encode('True');
     exit();
 }
 
@@ -53,7 +53,7 @@ if ($type == 2){
     $stmt->bindParam(':user',$uid);
     $stmt->execute();
     $checkSold = $stmt->fetch();
-    echo $checkSold['solde'];
+
     if ($checkSold['solde'] - $value < 0 ){
         echo json_encode('False');
         exit();
