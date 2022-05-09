@@ -50,7 +50,7 @@ if ($type == 2){
     }
 
     $stmt = $db->prepare("SELECT solde FROM users WHERE email = :user");
-    $stmt->bindParam(':user',$uids);
+    $stmt->bindParam(':user',$uid);
     $stmt->execute();
     $checkSold = $stmt->fetch();
     echo $checkSold['solde'];
