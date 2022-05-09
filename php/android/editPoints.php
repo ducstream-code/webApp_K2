@@ -11,7 +11,7 @@ $uid = $_GET['email'];
 $type = $_GET['type'];
 $value = $_GET['value'];
 
-if (!isset($key) || !isset($uids) || !isset($type) || !isset($value)){
+if (!isset($key) || !isset($uids)|| !isset($value)){
     echo json_encode('All fields must be set');
 }
 
