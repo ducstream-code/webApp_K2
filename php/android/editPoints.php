@@ -52,7 +52,7 @@ if ($type == 2){
     $stmt->bindParam(':user',$uids);
     $stmt->execute();
     $checkSold = $stmt->fetchAll();
-    echo $checkSold;
+    echo $checkSold['solde'];
     if ($checkSold['solde'] - $value < 0 ){
         echo json_encode('False');
         exit();
