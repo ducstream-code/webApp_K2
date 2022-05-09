@@ -80,10 +80,10 @@
     </div>
     <div class="header_buttons">
 
-        <button onclick="window.location='../pages/my_card.php'">Partie clients</button>
-        <button onclick="window.location='../pages/offers.php'">Mes clients</button>
+        <button onclick="window.location='../index.php'">Partie clients</button>
+
         <button onclick="document.getElementById('send_mail').style.display='block'">Ajouter des clients</button>
-        <button onclick="window.location='../pages/contact.php'">Contact</button>
+        <button onclick="window.location='../../pages/contact.php'">Contact</button>
     </div>
     <div class="header_login">
         <button onclick="window.location='/includes/logout.php'">Deconnexion</button>

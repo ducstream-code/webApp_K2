@@ -42,10 +42,6 @@ if($response->isSuccessful()) {
 
    // $stmt = $db->prepare("UPDATE orders SET status = 1 WHERE");
 
-
-
-
-
     header('Location: ../pages/order_error.php');
 } else {
     include "../includes/db.php";
