@@ -48,7 +48,7 @@ if ($type == 2){
         exit();
     }
 
-    $stmt = $db->prepare("SELECT solde FROM users WHERE id = :user");
+    $stmt = $db->prepare("SELECT solde FROM users WHERE email = :user");
     $stmt->bindParam(':user',$uids);
     $stmt->execute();
     $checkSold = $stmt->fetchAll();
