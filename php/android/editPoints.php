@@ -60,9 +60,9 @@ if ($type == 2){
     }
 
 
-    $stmt = $db->prepare("UPDATE users SET solde = (solde - :value) WHERE id = :user");
+    $stmt = $db->prepare("UPDATE users SET solde = (solde - :value) WHERE email = :user");
     $stmt->bindParam(':value',$value);
-    $stmt->bindParam(':user',$uids);
+    $stmt->bindParam(':user',$uid);
     $stmt->execute();
 
     echo json_encode('True');
