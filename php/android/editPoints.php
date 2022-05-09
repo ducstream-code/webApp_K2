@@ -13,6 +13,7 @@ $value = $_GET['value'];
 
 if (!isset($key) || !isset($uids)|| !isset($value)){
     echo json_encode('All fields must be set');
+    exit();
 }
 
 //action 1 = add points
