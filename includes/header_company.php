@@ -83,6 +83,7 @@
         <button onclick="window.location='../index.php'">Partie clients</button>
 
         <button onclick="document.getElementById('send_mail').style.display='block'">Ajouter des clients</button>
+        <a href="../assets/dl/LoyalityCard.apk">Application android</a>
         <button onclick="window.location='../../pages/contact.php'">Contact</button>
     </div>
     <div class="header_login">
