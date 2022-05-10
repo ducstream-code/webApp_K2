@@ -80,10 +80,11 @@
     </div>
     <div class="header_buttons">
 
-        <button onclick="window.location='../index.php'">Partie clients</button>
+        <button onclick="window.location='../../index.php'">Partie clients</button>
 
         <button onclick="document.getElementById('send_mail').style.display='block'">Ajouter des clients</button>
         <a href="../../assets/dl/LoyalityCard.apk">Application android</a>
+        <a href="../../assets/dl/K2_Java.jar">Application java</a>
         <button onclick="window.location='../../pages/contact.php'">Contact</button>
     </div>
     <div class="header_login">
