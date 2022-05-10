@@ -91,7 +91,8 @@ include ('includes/check_session.php');
     <div class="discount_title">
     <h3><?=$stmt ?> Offres partenaires disponibles </h3>
     <h5>Achats après achats, cummulez des points</h5>
-    </div>
+	<a href="./threejs/examples/LCSimulation.html">Simulation d'offre partenaires</a>   
+ </div>
     <div class="discount_container">
         <?php
         $stmt = $db->prepare("SELECT briev_description, store_image FROM discounts LIMIT 6");
